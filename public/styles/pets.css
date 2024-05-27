@@ -1,0 +1,38 @@
+ul{
+    display:grid;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
+    list-style: none;
+    padding:0 10px;
+}
+li{
+    border: solid 2px grey;
+    border-radius: 20px;
+    margin:3px;
+    font-size: 10pt;
+    padding: 40px 10px;
+    color: #000000;
+    position:relative;
+}
+.image{
+    float:right;
+    border-radius: 70px;
+    height: 150px;
+}
+li h3{
+    display:inline;
+    color: #5e7d83;
+}
+li p{
+    display:inline;
+}
+button{
+    margin:10px;
+    position:absolute;
+    left:35%;
+    top:85%;
+}
+.button:hover {
+    opacity:1;
+}
+

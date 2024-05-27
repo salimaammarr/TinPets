@@ -1,0 +1,21 @@
+.container{
+    grid-template-rows: 1fr 5fr;
+}
+.content h1{
+    margin:0;
+    color:brown;
+}
+.content p{
+    font-size:1.5em;
+}
+button{
+    display:flex;
+    flex-direction: column;
+    width: 25%;
+    margin:20px;
+    background-color: #fbeed9;
+    border: 2px solid rgb(158, 93, 93);
+    border-radius: 15px;
+    font-family: 'Lexend', sans-serif;
+    align-items: center;
+}

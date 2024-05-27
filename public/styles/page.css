@@ -1,0 +1,20 @@
+html{
+    background-color: #fff5e9;
+    margin:2%;
+}
+body{
+    display:grid;
+    grid-template-columns: 1fr;
+}
+.container{
+    align-items: center;
+    order:2;
+    display:grid;
+    margin: 10px;
+}
+.content{
+    align-self: start;
+    order:2;
+    font-family: 'Lexend', sans-serif;
+    padding: 2%;
+}

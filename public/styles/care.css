@@ -1,0 +1,34 @@
+
+.container{
+    grid-template-rows: 1fr 16fr;
+}
+p.intro{
+    text-align: center;
+    background-color:#8CB9BD ;
+    margin:20px;
+    padding: 10px;
+    color:#FEFBF6;
+    border-radius: 20px;
+}
+p{
+    text-align: left;
+    padding: 5px;
+    color: black;
+}
+.content h1{
+    text-align: center;
+    margin:0 20px;
+    color: #3b5152;
+    font-size:40px;
+}
+.content h3 {
+    text-align: left;
+    color: #5b7a7c;
+    font-size:20px;
+}
+ul{
+    list-style-type: circle;
+}
+.button:hover {
+    opacity: 1
+}
