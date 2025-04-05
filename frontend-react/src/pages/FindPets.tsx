@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import "./FindPets.css";
 
 interface SearchFormData {
   species: string;
@@ -96,123 +95,158 @@ const FindPets: React.FC = () => {
   };
 
   return (
-    <div className="find-pets">
-      <h1>Find your future bestfriend!</h1>
-      <p className="intro">
-        Looking for a specific type of pet? Use our search form to find the
-        perfect match for your family. Choose the species, breed, preferred age,
-        gender, and more to narrow down your search and discover pets that fit
-        your criteria.
-      </p>
+    <div className="container py-4">
+      <div className="row justify-content-center">
+        <div className="col-lg-8">
+          <div className="card shadow-sm">
+            <div className="card-body p-4">
+              <h1 className="text-center mb-3">Find your future bestfriend!</h1>
+              <p className="text-muted text-center mb-4">
+                Looking for a specific type of pet? Use our search form to find
+                the perfect match for your family. Choose the species, breed,
+                preferred age, gender, and more to narrow down your search and
+                discover pets that fit your criteria.
+              </p>
 
-      <form onSubmit={handleSubmit}>
-        <div className="form-group">
-          <label htmlFor="species">
-            Species:
-            <select
-              id="species"
-              name="species"
-              value={formData.species}
-              onChange={handleInputChange}
-            >
-              <option value="dog">Dog</option>
-              <option value="cat">Cat</option>
-            </select>
-          </label>
-        </div>
+              <form onSubmit={handleSubmit}>
+                <div className="mb-3">
+                  <label htmlFor="species" className="form-label">
+                    Species:
+                  </label>
+                  <select
+                    id="species"
+                    name="species"
+                    className="form-select"
+                    value={formData.species}
+                    onChange={handleInputChange}
+                  >
+                    <option value="dog">Dog</option>
+                    <option value="cat">Cat</option>
+                  </select>
+                </div>
 
-        <div className="form-group breed-group">
-          <label htmlFor="breed">Preferred breed:</label>
-          <input
-            type="text"
-            id="breed"
-            name="breed"
-            value={formData.breed}
-            onChange={handleInputChange}
-            disabled={noPreferenceBreed}
-          />
-          <div className="breed-preference">
-            <input
-              type="radio"
-              id="mixedBreed"
-              name="breedPreference"
-              checked={noPreferenceBreed}
-              onChange={handleBreedPreferenceChange}
-            />
-            <label htmlFor="mixedBreed">No preference</label>
+                <div className="mb-4">
+                  <label htmlFor="breed" className="form-label">
+                    Preferred breed:
+                  </label>
+                  <input
+                    type="text"
+                    id="breed"
+                    name="breed"
+                    className="form-control mb-2"
+                    value={formData.breed}
+                    onChange={handleInputChange}
+                    disabled={noPreferenceBreed}
+                  />
+                  <div className="form-check">
+                    <input
+                      type="radio"
+                      id="mixedBreed"
+                      name="breedPreference"
+                      className="form-check-input"
+                      checked={noPreferenceBreed}
+                      onChange={handleBreedPreferenceChange}
+                    />
+                    <label className="form-check-label" htmlFor="mixedBreed">
+                      No preference
+                    </label>
+                  </div>
+                </div>
+
+                <div className="mb-3">
+                  <label htmlFor="ageCategory" className="form-label">
+                    Preferred age:
+                  </label>
+                  <select
+                    id="ageCategory"
+                    name="ageCategory"
+                    className="form-select"
+                    value={formData.ageCategory}
+                    onChange={handleInputChange}
+                  >
+                    <option>Less than 1 year</option>
+                    <option>1 - 3 years</option>
+                    <option>3 - 7 years</option>
+                    <option>7 - 10 years</option>
+                    <option>More than 10 years</option>
+                    <option>No preference</option>
+                  </select>
+                </div>
+
+                <div className="mb-3">
+                  <label htmlFor="gender" className="form-label">
+                    Preferred gender:
+                  </label>
+                  <select
+                    id="gender"
+                    name="gender"
+                    className="form-select"
+                    value={formData.gender}
+                    onChange={handleInputChange}
+                  >
+                    <option>Male</option>
+                    <option>Female</option>
+                    <option>No preference</option>
+                  </select>
+                </div>
+
+                <div className="mb-4">
+                  <p className="mb-2">Do you need your pet to be social?</p>
+                  <div className="d-flex gap-4">
+                    <div className="form-check">
+                      <input
+                        type="radio"
+                        id="socialYes"
+                        name="social"
+                        value="yes"
+                        className="form-check-input"
+                        checked={formData.social === "yes"}
+                        onChange={handleInputChange}
+                      />
+                      <label className="form-check-label" htmlFor="socialYes">
+                        Yes
+                      </label>
+                    </div>
+                    <div className="form-check">
+                      <input
+                        type="radio"
+                        id="socialNo"
+                        name="social"
+                        value="no"
+                        className="form-check-input"
+                        checked={formData.social === "no"}
+                        onChange={handleInputChange}
+                      />
+                      <label className="form-check-label" htmlFor="socialNo">
+                        No
+                      </label>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="d-grid gap-2 d-md-flex justify-content-center">
+                  <button type="submit" className="btn btn-primary px-4">
+                    Find my bestfriend
+                  </button>
+                  <button
+                    type="button"
+                    className="btn btn-secondary px-4"
+                    onClick={handleReset}
+                  >
+                    Reset
+                  </button>
+                </div>
+
+                {errorMessage && (
+                  <div className="alert alert-danger mt-3 text-center">
+                    {errorMessage}
+                  </div>
+                )}
+              </form>
+            </div>
           </div>
         </div>
-
-        <div className="form-group">
-          <label htmlFor="ageCategory">
-            Preferred age:
-            <select
-              id="ageCategory"
-              name="ageCategory"
-              value={formData.ageCategory}
-              onChange={handleInputChange}
-            >
-              <option>Less than 1 year</option>
-              <option>1 - 3 years</option>
-              <option>3 - 7 years</option>
-              <option>7 - 10 years</option>
-              <option>More than 10 years</option>
-              <option>No preference</option>
-            </select>
-          </label>
-        </div>
-
-        <div className="form-group">
-          <label htmlFor="gender">
-            Preferred gender:
-            <select
-              id="gender"
-              name="gender"
-              value={formData.gender}
-              onChange={handleInputChange}
-            >
-              <option>Male</option>
-              <option>Female</option>
-              <option>No preference</option>
-            </select>
-          </label>
-        </div>
-
-        <div className="form-group social-group">
-          <p>Do you need your pet to be social?</p>
-          <div className="radio-group">
-            <label>
-              <input
-                type="radio"
-                name="social"
-                value="yes"
-                checked={formData.social === "yes"}
-                onChange={handleInputChange}
-              />
-              Yes
-            </label>
-            <label>
-              <input
-                type="radio"
-                name="social"
-                value="no"
-                checked={formData.social === "no"}
-                onChange={handleInputChange}
-              />
-              No
-            </label>
-          </div>
-        </div>
-
-        <div className="buttons">
-          <button type="submit">Find my bestfriend</button>
-          <button type="button" onClick={handleReset}>
-            Reset
-          </button>
-        </div>
-
-        {errorMessage && <p className="error-message">{errorMessage}</p>}
-      </form>
+      </div>
     </div>
   );
 };
