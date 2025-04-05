@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Home: React.FC = () => {
   return (
@@ -16,6 +17,14 @@ const Home: React.FC = () => {
                 looking for a playful pup or a cuddly cat, we're here to help
                 you find your perfect match.
               </p>
+              <div className="text-center mt-4">
+                <Link to="/find-pets" className="btn btn-primary me-2">
+                  Find Pets
+                </Link>
+                <Link to="/dog-care" className="btn btn-outline-secondary">
+                  Pet Care
+                </Link>
+              </div>
             </div>
           </div>
         </div>

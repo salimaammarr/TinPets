@@ -7,10 +7,10 @@ const Header: React.FC = () => {
   const handleNavCollapse = () => setIsNavCollapsed(!isNavCollapsed);
 
   return (
-    <header className="bg-primary text-white">
+    <header className="bg-primary text-white py-2">
       <nav className="navbar navbar-expand-lg navbar-dark">
         <div className="container">
-          <Link className="navbar-brand" to="/">
+          <Link className="navbar-brand fw-bold" to="/">
             TinPets
           </Link>
           <button
