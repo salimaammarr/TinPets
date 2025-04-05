@@ -19,7 +19,16 @@ const Home: React.FC = () => {
       <nav className="position-absolute top-0 start-0 w-100 py-3">
         <div className="container">
           <div className="d-flex justify-content-between align-items-center">
-            <Link to="/" className="text-custom-peach text-decoration-none">
+            <Link
+              to="/"
+              className="text-custom-peach text-decoration-none d-flex align-items-center"
+            >
+              <img
+                src="/logo.png"
+                alt="TinPets Logo"
+                className="logo-img-hero me-2"
+                style={{ height: "40px" }}
+              />
               <h1 className="h3 mb-0">TinPets</h1>
             </Link>
             <div className="d-flex gap-3">
