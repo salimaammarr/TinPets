@@ -18,9 +18,9 @@ import Giveaway from "./pages/Giveaway";
 function App() {
   return (
     <Router>
-      <div className="App">
+      <div className="d-flex flex-column min-vh-100">
         <Header />
-        <div className="container">
+        <main className="flex-grow-1">
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/login" element={<Login />} />
@@ -32,7 +32,7 @@ function App() {
             <Route path="/disclaimer" element={<Disclaimer />} />
             <Route path="/giveaway" element={<Giveaway />} />
           </Routes>
-        </div>
+        </main>
         <Footer />
       </div>
     </Router>

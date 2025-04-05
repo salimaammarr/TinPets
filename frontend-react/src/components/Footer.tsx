@@ -1,17 +1,67 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import "./Footer.css";
 
 const Footer: React.FC = () => {
   return (
-    <footer className="footer">
-      <div className="footer-content">
-        <div className="footer-links">
-          <Link to="/disclaimer">Disclaimer</Link>
-          <Link to="/contact">Contact Us</Link>
+    <footer className="bg-dark text-light py-4 mt-auto">
+      <div className="container">
+        <div className="row">
+          <div className="col-md-4 mb-3 mb-md-0">
+            <h5>TinPets</h5>
+            <p className="text-muted">Finding homes for pets in need.</p>
+          </div>
+          <div className="col-md-4 mb-3 mb-md-0">
+            <h5>Quick Links</h5>
+            <ul className="list-unstyled">
+              <li>
+                <Link to="/" className="text-light text-decoration-none">
+                  Home
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/find-pets"
+                  className="text-light text-decoration-none"
+                >
+                  Find Pets
+                </Link>
+              </li>
+              <li>
+                <Link to="/contact" className="text-light text-decoration-none">
+                  Contact Us
+                </Link>
+              </li>
+            </ul>
+          </div>
+          <div className="col-md-4">
+            <h5>Legal</h5>
+            <ul className="list-unstyled">
+              <li>
+                <Link
+                  to="/disclaimer"
+                  className="text-light text-decoration-none"
+                >
+                  Disclaimer
+                </Link>
+              </li>
+              <li>
+                <a href="#" className="text-light text-decoration-none">
+                  Privacy Policy
+                </a>
+              </li>
+              <li>
+                <a href="#" className="text-light text-decoration-none">
+                  Terms of Service
+                </a>
+              </li>
+            </ul>
+          </div>
         </div>
-        <div className="footer-copyright">
-          <p>&copy; {new Date().getFullYear()} TinPets. All rights reserved.</p>
+        <hr className="my-3" />
+        <div className="text-center text-muted">
+          <small>
+            &copy; {new Date().getFullYear()} TinPets. All rights reserved.
+          </small>
         </div>
       </div>
     </footer>

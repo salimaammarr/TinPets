@@ -1,37 +1,78 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import "./Header.css";
 
 const Header: React.FC = () => {
+  const [isNavCollapsed, setIsNavCollapsed] = useState(true);
+
+  const handleNavCollapse = () => setIsNavCollapsed(!isNavCollapsed);
+
   return (
-    <header className="header">
-      <nav>
-        <ul>
-          <li>
-            <Link to="/">Home</Link>
-          </li>
-          <li>
-            <Link to="/find-pets">Find Pets</Link>
-          </li>
-          <li>
-            <Link to="/dog-care">Dog Care</Link>
-          </li>
-          <li>
-            <Link to="/cat-care">Cat Care</Link>
-          </li>
-          <li>
-            <Link to="/giveaway">Giveaway</Link>
-          </li>
-          <li>
-            <Link to="/contact">Contact Us</Link>
-          </li>
-          <li>
-            <Link to="/login">Login</Link>
-          </li>
-          <li>
-            <Link to="/create-account">Create Account</Link>
-          </li>
-        </ul>
+    <header className="bg-primary text-white">
+      <nav className="navbar navbar-expand-lg navbar-dark">
+        <div className="container">
+          <Link className="navbar-brand" to="/">
+            TinPets
+          </Link>
+          <button
+            className="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNav"
+            aria-controls="navbarNav"
+            aria-expanded={!isNavCollapsed}
+            aria-label="Toggle navigation"
+            onClick={handleNavCollapse}
+          >
+            <span className="navbar-toggler-icon"></span>
+          </button>
+          <div
+            className={`${isNavCollapsed ? "collapse" : ""} navbar-collapse`}
+            id="navbarNav"
+          >
+            <ul className="navbar-nav ms-auto">
+              <li className="nav-item">
+                <Link className="nav-link" to="/">
+                  Home
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link className="nav-link" to="/find-pets">
+                  Find Pets
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link className="nav-link" to="/dog-care">
+                  Dog Care
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link className="nav-link" to="/cat-care">
+                  Cat Care
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link className="nav-link" to="/giveaway">
+                  Giveaway
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link className="nav-link" to="/contact">
+                  Contact Us
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link className="nav-link" to="/login">
+                  Login
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link className="nav-link" to="/create-account">
+                  Create Account
+                </Link>
+              </li>
+            </ul>
+          </div>
+        </div>
       </nav>
     </header>
   );

@@ -73,7 +73,8 @@ const FindPets: React.FC = () => {
       if (response.ok) {
         // Handle successful search - redirect to results page or update UI
         const data = await response.json();
-        // Handle the response data
+        console.log("Search results:", data);
+        // TODO: Implement results display or redirection
       } else {
         setErrorMessage("Failed to search for pets. Please try again.");
       }
