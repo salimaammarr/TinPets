@@ -5,12 +5,14 @@ const Disclaimer: React.FC = () => {
     <div className="container py-4">
       <div className="row justify-content-center">
         <div className="col-lg-8">
-          <div className="card shadow-sm">
+          <div className="card shadow-sm border-custom-green">
             <div className="card-body p-4">
-              <h1 className="text-center mb-4">Important</h1>
+              <h1 className="text-center mb-4 text-custom-brown">Important</h1>
               <div className="d-flex flex-column gap-4">
-                <section className="p-3 bg-light rounded border-start border-4 border-success">
-                  <h2 className="h4 mb-3">Privacy and Data Protection</h2>
+                <section className="p-3 bg-light rounded border-start border-4 border-custom-green">
+                  <h2 className="h4 mb-3 text-custom-brown">
+                    Privacy and Data Protection
+                  </h2>
                   <p className="text-muted mb-0">
                     We value your privacy and the integrity of your information.
                     We promise that your personal details and any information
@@ -20,8 +22,10 @@ const Disclaimer: React.FC = () => {
                   </p>
                 </section>
 
-                <section className="p-3 bg-light rounded border-start border-4 border-warning">
-                  <h2 className="h4 mb-3">Information Accuracy</h2>
+                <section className="p-3 bg-light rounded border-start border-4 border-custom-beige">
+                  <h2 className="h4 mb-3 text-custom-brown">
+                    Information Accuracy
+                  </h2>
                   <p className="text-muted mb-0">
                     Please note that while we strive to provide accurate and
                     up-to-date information, we rely on pet owners to provide
@@ -33,8 +37,8 @@ const Disclaimer: React.FC = () => {
                   </p>
                 </section>
 
-                <section className="p-3 bg-light rounded border-start border-4 border-info">
-                  <h2 className="h4 mb-3">Our Commitment</h2>
+                <section className="p-3 bg-light rounded border-start border-4 border-custom-pink">
+                  <h2 className="h4 mb-3 text-custom-brown">Our Commitment</h2>
                   <p className="text-muted mb-0">
                     Thank you for choosing our platform. Your safety and trust
                     are our top priorities. We are dedicated to maintaining a
@@ -51,7 +55,7 @@ const Disclaimer: React.FC = () => {
                     hesitate to{" "}
                     <a
                       href="/contact"
-                      className="text-primary text-decoration-none fw-medium"
+                      className="text-custom-brown text-decoration-none fw-medium"
                     >
                       contact us
                     </a>
