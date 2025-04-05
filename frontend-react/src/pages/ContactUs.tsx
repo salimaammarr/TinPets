@@ -80,9 +80,11 @@ const ContactUs: React.FC = () => {
     <div className="container py-4">
       <div className="row justify-content-center">
         <div className="col-lg-8">
-          <div className="card shadow-sm">
+          <div className="card shadow-sm border-custom-green">
             <div className="card-body p-4">
-              <h1 className="text-center mb-3">Let's get in touch!</h1>
+              <h1 className="text-center mb-3 text-custom-brown">
+                Let's get in touch!
+              </h1>
               <p className="text-muted text-center mb-4">
                 We value your feedback and are here to assist you. If you have
                 any questions, concerns, or simply want to get in touch, please
@@ -92,7 +94,10 @@ const ContactUs: React.FC = () => {
 
               <form onSubmit={handleSubmit} className="mb-4">
                 <div className="mb-3">
-                  <label htmlFor="name" className="form-label">
+                  <label
+                    htmlFor="name"
+                    className="form-label text-custom-brown"
+                  >
                     Name *
                   </label>
                   <input
@@ -107,7 +112,10 @@ const ContactUs: React.FC = () => {
                 </div>
 
                 <div className="mb-3">
-                  <label htmlFor="email" className="form-label">
+                  <label
+                    htmlFor="email"
+                    className="form-label text-custom-brown"
+                  >
                     Email *
                   </label>
                   <input
@@ -122,7 +130,10 @@ const ContactUs: React.FC = () => {
                 </div>
 
                 <div className="mb-3">
-                  <label htmlFor="subject" className="form-label">
+                  <label
+                    htmlFor="subject"
+                    className="form-label text-custom-brown"
+                  >
                     Subject
                   </label>
                   <input
@@ -136,7 +147,10 @@ const ContactUs: React.FC = () => {
                 </div>
 
                 <div className="mb-4">
-                  <label htmlFor="message" className="form-label">
+                  <label
+                    htmlFor="message"
+                    className="form-label text-custom-brown"
+                  >
                     Message *
                   </label>
                   <textarea
@@ -151,12 +165,12 @@ const ContactUs: React.FC = () => {
                 </div>
 
                 <div className="d-grid gap-2 d-md-flex justify-content-center">
-                  <button type="submit" className="btn btn-primary px-4">
+                  <button type="submit" className="btn btn-custom-primary px-4">
                     Send Message
                   </button>
                   <button
                     type="button"
-                    className="btn btn-secondary px-4"
+                    className="btn btn-custom-secondary px-4"
                     onClick={() =>
                       setFormData({
                         name: "",
@@ -183,8 +197,10 @@ const ContactUs: React.FC = () => {
                 )}
               </form>
 
-              <div className="border-top pt-4">
-                <h2 className="h4 mb-3">Additional Contact Information</h2>
+              <div className="border-top border-custom-beige pt-4">
+                <h2 className="h4 mb-3 text-custom-brown">
+                  Additional Contact Information
+                </h2>
                 <p className="text-muted mb-3">
                   You can also reach us through the following channels:
                 </p>
