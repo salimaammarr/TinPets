@@ -2,18 +2,17 @@ import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "./styles/custom.css";
 
-// Import components (we'll create these next)
+// Import components
 import Header from "./components/Header";
 import Footer from "./components/Footer";
-import Home from "./pages/Home";
-import Login from "./pages/Login";
-import CreateAccount from "./pages/CreateAccount";
-import FindPets from "./pages/FindPets";
-import DogCare from "./pages/DogCare";
-import CatCare from "./pages/CatCare";
-import ContactUs from "./pages/ContactUs";
-import Disclaimer from "./pages/Disclaimer";
-import Giveaway from "./pages/Giveaway";
+import Home from "./components/Home";
+import Login from "./components/Login";
+import CreateAccount from "./components/CreateAccount";
+import FindPets from "./components/FindPets";
+import PetCare from "./components/pages/PetCare";
+import ContactUs from "./components/ContactUs";
+import Disclaimer from "./components/Disclaimer";
+import Giveaway from "./components/Giveaway";
 
 function App() {
   return (
@@ -26,8 +25,7 @@ function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/create-account" element={<CreateAccount />} />
             <Route path="/find-pets" element={<FindPets />} />
-            <Route path="/dog-care" element={<DogCare />} />
-            <Route path="/cat-care" element={<CatCare />} />
+            <Route path="/pet-care" element={<PetCare />} />
             <Route path="/contact" element={<ContactUs />} />
             <Route path="/disclaimer" element={<Disclaimer />} />
             <Route path="/giveaway" element={<Giveaway />} />

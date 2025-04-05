@@ -6,18 +6,15 @@ const Home: React.FC = () => {
     <div className="container py-4">
       <div className="row justify-content-center">
         <div className="col-lg-8">
-          <div className="card shadow-sm border-custom-green">
+          <div className="card shadow-sm border-custom-yellow">
             <div className="card-body p-4">
               <div className="text-center mb-4">
-                <img
-                  src="/logo.png"
-                  alt="TinPets Logo"
-                  height="60"
-                  className="mb-3"
-                />
-                <h1 className="mb-0 text-custom-brown">Welcome to TinPets!</h1>
+                <h1 className="mb-3 text-custom-navy">Welcome to TinPets!</h1>
+                <h4 className="text-custom-orange mb-3">
+                  Find Your Perfect Companion
+                </h4>
               </div>
-              <p className="text-muted text-center">
+              <p className="text-center">
                 TinPets is your go-to platform for finding your new furry
                 friend. Our mission is to connect loving families with pets in
                 need of a forever home. Explore our website to discover a
@@ -29,7 +26,7 @@ const Home: React.FC = () => {
                 <Link to="/find-pets" className="btn btn-custom-primary me-2">
                   Find Pets
                 </Link>
-                <Link to="/dog-care" className="btn btn-custom-secondary">
+                <Link to="/pet-care" className="btn btn-custom-secondary">
                   Pet Care
                 </Link>
               </div>

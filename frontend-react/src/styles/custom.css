@@ -1,82 +1,393 @@
 :root {
-  --primary-green: #5f8b4c;
-  --light-beige: #ffddab;
-  --light-pink: #ff9a9a;
-  --dark-brown: #945034;
+  --primary-yellow: #ffd700; /* Bright yellow */
+  --primary-orange: #ff8c00; /* Dark orange */
+  --primary-navy: #003366; /* Navy blue */
+  --text-dark: #003366; /* Navy for text */
+  --text-light: #ffffff; /* White text */
+  --background-light: #ffffff; /* White background */
+  --background-dark: #003366; /* Navy background */
+  --accent-yellow: #ffe44d; /* Light yellow for hover */
+  --accent-orange: #ffa533; /* Light orange for hover */
+  --accent-navy: #004080; /* Lighter navy for hover */
 }
 
-/* Custom button styles */
+/* Font Imports */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
+
+/* Base Typography */
+body {
+  font-family: "Poppins", sans-serif;
+  color: var(--text-dark);
+  line-height: 1.6;
+  background-color: var(--background-light);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  color: var(--primary-navy);
+  margin-bottom: 1rem;
+}
+
+/* Logo Styles */
+.logo-img {
+  height: 60px;
+  width: auto;
+  transition: all 0.2s ease;
+}
+
+.logo-img:hover {
+  transform: scale(1.05);
+}
+
+/* Button Styles */
 .btn-custom-primary {
-  background-color: var(--primary-green);
-  border-color: var(--primary-green);
-  color: white;
+  background-color: var(--primary-yellow);
+  border-color: var(--primary-yellow);
+  color: var(--text-dark);
+  transition: all 0.2s ease;
+  font-weight: 500;
+  padding: 0.5rem 1.5rem;
+  border-radius: 6px;
 }
 
 .btn-custom-primary:hover {
-  background-color: #4f7a3d;
-  border-color: #4f7a3d;
-  color: white;
+  background-color: var(--accent-yellow);
+  border-color: var(--accent-yellow);
+  color: var(--text-dark);
+  transform: translateY(-1px);
 }
 
 .btn-custom-secondary {
-  background-color: var(--light-beige);
-  border-color: var(--light-beige);
-  color: var(--dark-brown);
+  background-color: var(--primary-orange);
+  border-color: var(--primary-orange);
+  color: var(--text-light);
+  transition: all 0.2s ease;
+  font-weight: 500;
+  padding: 0.5rem 1.5rem;
+  border-radius: 6px;
 }
 
 .btn-custom-secondary:hover {
-  background-color: #f0d19a;
-  border-color: #f0d19a;
-  color: var(--dark-brown);
+  background-color: var(--accent-orange);
+  border-color: var(--accent-orange);
+  color: var(--text-light);
+  transform: translateY(-1px);
 }
 
-/* Custom background colors */
-.bg-custom-green {
-  background-color: var(--primary-green) !important;
+/* Card Styles */
+.card {
+  border-radius: 8px;
+  transition: all 0.2s ease;
+  background-color: var(--background-light);
+  border: 1px solid var(--primary-yellow);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
 }
 
-.bg-custom-beige {
-  background-color: var(--light-beige) !important;
+.border-custom-yellow {
+  border: 1px solid var(--primary-yellow) !important;
 }
 
-.bg-custom-pink {
-  background-color: var(--light-pink) !important;
+.border-custom-orange {
+  border: 1px solid var(--primary-orange) !important;
 }
 
-.bg-custom-brown {
-  background-color: var(--dark-brown) !important;
+/* Form Controls */
+.form-control {
+  border-radius: 6px;
+  border: 1px solid var(--primary-navy);
+  transition: all 0.2s ease;
+  font-family: "Poppins", sans-serif;
+  padding: 0.75rem 1rem;
+  background-color: var(--background-light);
 }
 
-/* Custom text colors */
-.text-custom-green {
-  color: var(--primary-green) !important;
+.form-control:focus {
+  border-color: var(--primary-yellow);
+  box-shadow: 0 0 0 0.2rem rgba(255, 215, 0, 0.25);
+  background-color: var(--text-light);
 }
 
-.text-custom-beige {
-  color: var(--light-beige) !important;
+.form-select {
+  border-radius: 6px;
+  border: 1px solid var(--primary-navy);
+  transition: all 0.2s ease;
+  font-family: "Poppins", sans-serif;
+  padding: 0.75rem 1rem;
+  background-color: var(--background-light);
 }
 
-.text-custom-pink {
-  color: var(--light-pink) !important;
+.form-select:focus {
+  border-color: var(--primary-yellow);
+  box-shadow: 0 0 0 0.2rem rgba(255, 215, 0, 0.25);
+  background-color: var(--text-light);
 }
 
-.text-custom-brown {
-  color: var(--dark-brown) !important;
+/* Text Styles */
+.text-custom-navy {
+  color: var(--primary-navy) !important;
+  font-weight: 500;
 }
 
-/* Custom border colors */
-.border-custom-green {
-  border-color: var(--primary-green) !important;
+.text-custom-yellow {
+  color: var(--primary-yellow) !important;
+  font-weight: 500;
 }
 
-.border-custom-beige {
-  border-color: var(--light-beige) !important;
+.text-custom-orange {
+  color: var(--primary-orange) !important;
+  font-weight: 500;
 }
 
-.border-custom-pink {
-  border-color: var(--light-pink) !important;
+/* Background Colors */
+.bg-custom-navy {
+  background-color: var(--primary-navy) !important;
 }
 
-.border-custom-brown {
-  border-color: var(--dark-brown) !important;
+.bg-custom-yellow {
+  background-color: var(--primary-yellow) !important;
+}
+
+.bg-custom-orange {
+  background-color: var(--primary-orange) !important;
+}
+
+/* Alert Styles */
+.alert {
+  border-radius: 6px;
+  padding: 0.75rem 1rem;
+  margin-bottom: 1rem;
+  font-family: "Poppins", sans-serif;
+  background-color: var(--text-light);
+}
+
+.alert-success {
+  background-color: rgba(255, 215, 0, 0.1);
+  color: var(--primary-navy);
+  border: 1px solid var(--primary-yellow);
+}
+
+.alert-danger {
+  background-color: rgba(255, 140, 0, 0.1);
+  color: var(--primary-orange);
+  border: 1px solid var(--primary-orange);
+}
+
+/* Section Dividers */
+.border-bottom {
+  border-bottom: 1px solid var(--primary-yellow) !important;
+  padding-bottom: 1rem;
+  margin-bottom: 1rem;
+}
+
+/* Links */
+a {
+  color: var(--primary-navy);
+  text-decoration: none;
+  transition: all 0.2s ease;
+  font-weight: 500;
+}
+
+a:hover {
+  color: var(--primary-orange);
+  text-decoration: underline;
+}
+
+/* Form Labels */
+.form-label {
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+  color: var(--primary-navy);
+}
+
+/* Radio and Checkbox Styles */
+.form-check-input {
+  border-color: var(--primary-navy);
+}
+
+.form-check-input:checked {
+  background-color: var(--primary-yellow);
+  border-color: var(--primary-yellow);
+}
+
+.form-check-input:focus {
+  border-color: var(--primary-yellow);
+  box-shadow: 0 0 0 0.2rem rgba(255, 215, 0, 0.25);
+}
+
+/* Container Padding */
+.container {
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+}
+
+/* Card Body Padding */
+.card-body {
+  padding: 1.5rem;
+}
+
+/* List Styles */
+ul {
+  padding-left: 1.25rem;
+  font-family: "Poppins", sans-serif;
+}
+
+li {
+  margin-bottom: 0.5rem;
+}
+
+/* Small Text */
+.small {
+  font-size: 0.875rem;
+  color: var(--primary-navy);
+  font-weight: 400;
+}
+
+/* Text Muted */
+.text-muted {
+  color: var(--primary-navy) !important;
+  font-weight: 400;
+}
+
+/* Grid Gap */
+.row {
+  margin-bottom: 1.5rem;
+}
+
+/* Form Groups */
+.mb-3,
+.mb-4 {
+  margin-bottom: 1rem !important;
+}
+
+/* Button Groups */
+.d-grid {
+  gap: 0.5rem;
+}
+
+/* Navbar Styles */
+.navbar {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
+}
+
+.navbar-brand {
+  font-size: 1.5rem;
+  transition: all 0.3s ease;
+}
+
+.navbar-brand:hover {
+  transform: scale(1.02);
+}
+
+.nav-link {
+  position: relative;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  border-radius: 6px;
+}
+
+.nav-link:hover {
+  color: var(--primary-yellow) !important;
+  background-color: rgba(255, 215, 0, 0.1);
+}
+
+.nav-active {
+  color: var(--primary-yellow) !important;
+  background-color: rgba(255, 215, 0, 0.15);
+}
+
+.navbar-toggler:focus {
+  box-shadow: none;
+}
+
+.navbar-toggler {
+  padding: 0.5rem;
+  transition: all 0.3s ease;
+}
+
+.navbar-toggler:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 6px;
+}
+
+.btn-custom-primary.nav-link {
+  border: none;
+  padding: 0.5rem 1.5rem;
+  transition: all 0.3s ease;
+}
+
+.btn-custom-primary.nav-link:hover {
+  background-color: var(--accent-yellow);
+  color: var(--text-dark) !important;
+  transform: translateY(-1px);
+}
+
+@media (max-width: 991.98px) {
+  .navbar-collapse {
+    padding: 1rem 0;
+  }
+
+  .navbar-nav {
+    padding: 0.5rem;
+    background-color: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+  }
+
+  .btn-custom-primary.nav-link {
+    margin-top: 0.5rem;
+    text-align: center;
+  }
+}
+
+/* Footer Styles */
+footer {
+  background-color: var(--primary-navy) !important;
+  color: var(--text-light);
+  font-family: "Poppins", sans-serif;
+}
+
+footer h5 {
+  color: var(--primary-yellow);
+  font-weight: 600;
+}
+
+footer a {
+  color: var(--primary-yellow);
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+footer a:hover {
+  color: var(--primary-orange);
+  text-decoration: underline;
+}
+
+/* Responsive Padding */
+@media (max-width: 768px) {
+  .container {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+  }
+
+  .card-body {
+    padding: 1rem;
+  }
+
+  h1 {
+    font-size: 1.75rem;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+  }
+
+  h3 {
+    font-size: 1.25rem;
+  }
 }

@@ -3,23 +3,17 @@ import { Link } from "react-router-dom";
 
 const Footer: React.FC = () => {
   return (
-    <footer className="bg-custom-brown text-light py-4 mt-auto">
+    <footer className="bg-custom-navy text-light py-4 mt-auto">
       <div className="container">
         <div className="row">
-          <div className="col-md-4 mb-3 mb-md-0">
-            <div className="d-flex align-items-center mb-2">
-              <img
-                src="/logo.png"
-                alt="TinPets Logo"
-                height="25"
-                className="me-2"
-              />
-              <h5 className="mb-0">TinPets</h5>
-            </div>
-            <p className="text-custom-beige">Finding homes for pets in need.</p>
+          <div className="col-md-4 mb-4 mb-md-0">
+            <h5 className="text-custom-yellow">About TinPets</h5>
+            <p className="text-light">
+              Making pet adoption and care easier for everyone.
+            </p>
           </div>
           <div className="col-md-4 mb-3 mb-md-0">
-            <h5 className="text-custom-beige">Quick Links</h5>
+            <h5 className="text-custom-yellow">Quick Links</h5>
             <ul className="list-unstyled">
               <li>
                 <Link to="/" className="text-light text-decoration-none">
@@ -42,7 +36,7 @@ const Footer: React.FC = () => {
             </ul>
           </div>
           <div className="col-md-4">
-            <h5 className="text-custom-beige">Legal</h5>
+            <h5 className="text-custom-yellow">Legal</h5>
             <ul className="list-unstyled">
               <li>
                 <Link
@@ -65,8 +59,8 @@ const Footer: React.FC = () => {
             </ul>
           </div>
         </div>
-        <hr className="my-3 border-custom-beige" />
-        <div className="text-center text-custom-beige">
+        <hr className="my-3 border-custom-yellow" />
+        <div className="text-center text-light">
           <small>
             &copy; {new Date().getFullYear()} TinPets. All rights reserved.
           </small>
