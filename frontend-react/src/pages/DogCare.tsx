@@ -5,9 +5,9 @@ const DogCare: React.FC = () => {
     <div className="container py-4">
       <div className="row justify-content-center">
         <div className="col-lg-8">
-          <div className="card shadow-sm">
+          <div className="card shadow-sm border-custom-green">
             <div className="card-body p-4">
-              <h1 className="text-center mb-3">
+              <h1 className="text-center mb-3 text-custom-brown">
                 Learn how to take care of your dog
               </h1>
               <p className="text-muted text-center mb-4">
@@ -18,8 +18,8 @@ const DogCare: React.FC = () => {
                 and healthy life.
               </p>
 
-              <div className="mb-4 pb-3 border-bottom">
-                <h3 className="text-success mb-3">Feeding:</h3>
+              <div className="mb-4 pb-3 border-bottom border-custom-beige">
+                <h3 className="text-custom-green mb-3">Feeding:</h3>
                 <p className="text-muted mb-3">
                   Dogs require a balanced diet to maintain their health. It is
                   important to provide them with the right amount of nutrients,
@@ -45,8 +45,8 @@ const DogCare: React.FC = () => {
                 </ul>
               </div>
 
-              <div className="mb-4 pb-3 border-bottom">
-                <h3 className="text-success mb-3">Grooming:</h3>
+              <div className="mb-4 pb-3 border-bottom border-custom-beige">
+                <h3 className="text-custom-green mb-3">Grooming:</h3>
                 <p className="text-muted mb-3">
                   Regular grooming is essential to keep your dog clean and
                   healthy. It also provides an opportunity to check for any
@@ -71,7 +71,7 @@ const DogCare: React.FC = () => {
               </div>
 
               <div className="mb-4">
-                <h3 className="text-success mb-3">Exercise:</h3>
+                <h3 className="text-custom-green mb-3">Exercise:</h3>
                 <p className="text-muted mb-3">
                   Dogs need regular physical activity to maintain their overall
                   health and well-being. Exercise helps prevent obesity,
@@ -96,13 +96,13 @@ const DogCare: React.FC = () => {
                 </ul>
               </div>
 
-              <div className="text-center text-muted small mt-4 pt-3 border-top">
+              <div className="text-center text-muted small mt-4 pt-3 border-top border-custom-beige">
                 Source:{" "}
                 <a
                   href="https://animalfoundation.com/whats-going-on/blog/basic-necessities-proper-pet-care"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-decoration-none"
+                  className="text-decoration-none text-custom-brown"
                 >
                   The Animal Foundation
                 </a>
