@@ -99,9 +99,11 @@ const FindPets: React.FC = () => {
     <div className="container py-4">
       <div className="row justify-content-center">
         <div className="col-lg-8">
-          <div className="card shadow-sm">
+          <div className="card shadow-sm border-custom-green">
             <div className="card-body p-4">
-              <h1 className="text-center mb-3">Find your future bestfriend!</h1>
+              <h1 className="text-center mb-3 text-custom-brown">
+                Find your future bestfriend!
+              </h1>
               <p className="text-muted text-center mb-4">
                 Looking for a specific type of pet? Use our search form to find
                 the perfect match for your family. Choose the species, breed,
@@ -111,7 +113,10 @@ const FindPets: React.FC = () => {
 
               <form onSubmit={handleSubmit}>
                 <div className="mb-3">
-                  <label htmlFor="species" className="form-label">
+                  <label
+                    htmlFor="species"
+                    className="form-label text-custom-brown"
+                  >
                     Species:
                   </label>
                   <select
@@ -127,7 +132,10 @@ const FindPets: React.FC = () => {
                 </div>
 
                 <div className="mb-4">
-                  <label htmlFor="breed" className="form-label">
+                  <label
+                    htmlFor="breed"
+                    className="form-label text-custom-brown"
+                  >
                     Preferred breed:
                   </label>
                   <input
@@ -148,14 +156,20 @@ const FindPets: React.FC = () => {
                       checked={noPreferenceBreed}
                       onChange={handleBreedPreferenceChange}
                     />
-                    <label className="form-check-label" htmlFor="mixedBreed">
+                    <label
+                      className="form-check-label text-custom-brown"
+                      htmlFor="mixedBreed"
+                    >
                       No preference
                     </label>
                   </div>
                 </div>
 
                 <div className="mb-3">
-                  <label htmlFor="ageCategory" className="form-label">
+                  <label
+                    htmlFor="ageCategory"
+                    className="form-label text-custom-brown"
+                  >
                     Preferred age:
                   </label>
                   <select
@@ -175,7 +189,10 @@ const FindPets: React.FC = () => {
                 </div>
 
                 <div className="mb-3">
-                  <label htmlFor="gender" className="form-label">
+                  <label
+                    htmlFor="gender"
+                    className="form-label text-custom-brown"
+                  >
                     Preferred gender:
                   </label>
                   <select
@@ -192,7 +209,9 @@ const FindPets: React.FC = () => {
                 </div>
 
                 <div className="mb-4">
-                  <p className="mb-2">Do you need your pet to be social?</p>
+                  <p className="mb-2 text-custom-brown">
+                    Do you need your pet to be social?
+                  </p>
                   <div className="d-flex gap-4">
                     <div className="form-check">
                       <input
@@ -204,7 +223,10 @@ const FindPets: React.FC = () => {
                         checked={formData.social === "yes"}
                         onChange={handleInputChange}
                       />
-                      <label className="form-check-label" htmlFor="socialYes">
+                      <label
+                        className="form-check-label text-custom-brown"
+                        htmlFor="socialYes"
+                      >
                         Yes
                       </label>
                     </div>
@@ -218,7 +240,10 @@ const FindPets: React.FC = () => {
                         checked={formData.social === "no"}
                         onChange={handleInputChange}
                       />
-                      <label className="form-check-label" htmlFor="socialNo">
+                      <label
+                        className="form-check-label text-custom-brown"
+                        htmlFor="socialNo"
+                      >
                         No
                       </label>
                     </div>
@@ -226,12 +251,12 @@ const FindPets: React.FC = () => {
                 </div>
 
                 <div className="d-grid gap-2 d-md-flex justify-content-center">
-                  <button type="submit" className="btn btn-primary px-4">
+                  <button type="submit" className="btn btn-custom-primary px-4">
                     Find my bestfriend
                   </button>
                   <button
                     type="button"
-                    className="btn btn-secondary px-4"
+                    className="btn btn-custom-secondary px-4"
                     onClick={handleReset}
                   >
                     Reset

@@ -62,15 +62,20 @@ const CreateAccount: React.FC = () => {
     <div className="container py-4">
       <div className="row justify-content-center">
         <div className="col-md-6 col-lg-4">
-          <div className="card shadow-sm">
+          <div className="card shadow-sm border-custom-green">
             <div className="card-body p-4">
-              <h1 className="text-center mb-3">Let's get started!</h1>
+              <h1 className="text-center mb-3 text-custom-brown">
+                Let's get started!
+              </h1>
               <p className="text-muted text-center mb-4">
                 Enter your username and password to create an account
               </p>
               <form onSubmit={handleSubmit}>
                 <div className="mb-3">
-                  <label htmlFor="username" className="form-label">
+                  <label
+                    htmlFor="username"
+                    className="form-label text-custom-brown"
+                  >
                     Username:
                   </label>
                   <input
@@ -84,7 +89,10 @@ const CreateAccount: React.FC = () => {
                   />
                 </div>
                 <div className="mb-4">
-                  <label htmlFor="password" className="form-label">
+                  <label
+                    htmlFor="password"
+                    className="form-label text-custom-brown"
+                  >
                     Password:
                   </label>
                   <input
@@ -98,7 +106,7 @@ const CreateAccount: React.FC = () => {
                   />
                 </div>
                 <div className="d-grid">
-                  <button type="submit" className="btn btn-primary">
+                  <button type="submit" className="btn btn-custom-primary">
                     Create account
                   </button>
                 </div>
