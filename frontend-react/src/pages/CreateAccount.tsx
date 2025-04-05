@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import "./CreateAccount.css";
 
 const CreateAccount: React.FC = () => {
   const [username, setUsername] = useState("");
@@ -60,35 +59,59 @@ const CreateAccount: React.FC = () => {
   };
 
   return (
-    <div className="create-account">
-      <h1>Let's get started!</h1>
-      <form onSubmit={handleSubmit}>
-        <p>Enter your username and password to create an account</p>
-        <div className="form-group">
-          <label htmlFor="username">Username:</label>
-          <input
-            type="text"
-            id="username"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-            placeholder="letters and digits"
-            required
-          />
+    <div className="container py-4">
+      <div className="row justify-content-center">
+        <div className="col-md-6 col-lg-4">
+          <div className="card shadow-sm">
+            <div className="card-body p-4">
+              <h1 className="text-center mb-3">Let's get started!</h1>
+              <p className="text-muted text-center mb-4">
+                Enter your username and password to create an account
+              </p>
+              <form onSubmit={handleSubmit}>
+                <div className="mb-3">
+                  <label htmlFor="username" className="form-label">
+                    Username:
+                  </label>
+                  <input
+                    type="text"
+                    className="form-control"
+                    id="username"
+                    value={username}
+                    onChange={(e) => setUsername(e.target.value)}
+                    placeholder="letters and digits"
+                    required
+                  />
+                </div>
+                <div className="mb-4">
+                  <label htmlFor="password" className="form-label">
+                    Password:
+                  </label>
+                  <input
+                    type="password"
+                    className="form-control"
+                    id="password"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    placeholder="letters and digits (4 digits minimum)"
+                    required
+                  />
+                </div>
+                <div className="d-grid">
+                  <button type="submit" className="btn btn-primary">
+                    Create account
+                  </button>
+                </div>
+                {message && (
+                  <div className="alert alert-danger mt-3 text-center">
+                    {message}
+                  </div>
+                )}
+              </form>
+            </div>
+          </div>
         </div>
-        <div className="form-group">
-          <label htmlFor="password">Password:</label>
-          <input
-            type="password"
-            id="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            placeholder="letters and digits (4 digits minimum)"
-            required
-          />
-        </div>
-        <button type="submit">Create account</button>
-        {message && <p className="error-message">{message}</p>}
-      </form>
+      </div>
     </div>
   );
 };
