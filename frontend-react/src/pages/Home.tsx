@@ -6,7 +6,7 @@ const Home: React.FC = () => {
     <div className="container py-4">
       <div className="row justify-content-center">
         <div className="col-lg-8">
-          <div className="card shadow-sm">
+          <div className="card shadow-sm border-custom-green">
             <div className="card-body p-4">
               <div className="text-center mb-4">
                 <img
@@ -15,7 +15,7 @@ const Home: React.FC = () => {
                   height="60"
                   className="mb-3"
                 />
-                <h1 className="mb-0">Welcome to TinPets!</h1>
+                <h1 className="mb-0 text-custom-brown">Welcome to TinPets!</h1>
               </div>
               <p className="text-muted text-center">
                 TinPets is your go-to platform for finding your new furry
@@ -26,10 +26,10 @@ const Home: React.FC = () => {
                 you find your perfect match.
               </p>
               <div className="text-center mt-4">
-                <Link to="/find-pets" className="btn btn-primary me-2">
+                <Link to="/find-pets" className="btn btn-custom-primary me-2">
                   Find Pets
                 </Link>
-                <Link to="/dog-care" className="btn btn-outline-secondary">
+                <Link to="/dog-care" className="btn btn-custom-secondary">
                   Pet Care
                 </Link>
               </div>

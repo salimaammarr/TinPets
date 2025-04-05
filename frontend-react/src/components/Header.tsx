@@ -7,7 +7,7 @@ const Header: React.FC = () => {
   const handleNavCollapse = () => setIsNavCollapsed(!isNavCollapsed);
 
   return (
-    <header className="bg-primary text-white py-2">
+    <header className="bg-custom-green text-white py-2">
       <nav className="navbar navbar-expand-lg navbar-dark">
         <div className="container">
           <Link className="navbar-brand d-flex align-items-center" to="/">

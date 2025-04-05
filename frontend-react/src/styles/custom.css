@@ -1,0 +1,82 @@
+:root {
+  --primary-green: #5f8b4c;
+  --light-beige: #ffddab;
+  --light-pink: #ff9a9a;
+  --dark-brown: #945034;
+}
+
+/* Custom button styles */
+.btn-custom-primary {
+  background-color: var(--primary-green);
+  border-color: var(--primary-green);
+  color: white;
+}
+
+.btn-custom-primary:hover {
+  background-color: #4f7a3d;
+  border-color: #4f7a3d;
+  color: white;
+}
+
+.btn-custom-secondary {
+  background-color: var(--light-beige);
+  border-color: var(--light-beige);
+  color: var(--dark-brown);
+}
+
+.btn-custom-secondary:hover {
+  background-color: #f0d19a;
+  border-color: #f0d19a;
+  color: var(--dark-brown);
+}
+
+/* Custom background colors */
+.bg-custom-green {
+  background-color: var(--primary-green) !important;
+}
+
+.bg-custom-beige {
+  background-color: var(--light-beige) !important;
+}
+
+.bg-custom-pink {
+  background-color: var(--light-pink) !important;
+}
+
+.bg-custom-brown {
+  background-color: var(--dark-brown) !important;
+}
+
+/* Custom text colors */
+.text-custom-green {
+  color: var(--primary-green) !important;
+}
+
+.text-custom-beige {
+  color: var(--light-beige) !important;
+}
+
+.text-custom-pink {
+  color: var(--light-pink) !important;
+}
+
+.text-custom-brown {
+  color: var(--dark-brown) !important;
+}
+
+/* Custom border colors */
+.border-custom-green {
+  border-color: var(--primary-green) !important;
+}
+
+.border-custom-beige {
+  border-color: var(--light-beige) !important;
+}
+
+.border-custom-pink {
+  border-color: var(--light-pink) !important;
+}
+
+.border-custom-brown {
+  border-color: var(--dark-brown) !important;
+}
