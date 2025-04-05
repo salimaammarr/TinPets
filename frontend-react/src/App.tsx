@@ -19,15 +19,15 @@ import ContactUs from "./components/ContactUs";
 import Disclaimer from "./components/Disclaimer";
 import Giveaway from "./components/Giveaway";
 
-// Wrapper component to handle conditional footer rendering
+// Wrapper component to handle conditional header and footer rendering
 const AppContent: React.FC = () => {
   const location = useLocation();
   const isHomePage = location.pathname === "/";
 
   return (
     <div className="d-flex flex-column min-vh-100">
-      <Header />
-      <main className="flex-grow-1">
+      {!isHomePage && <Header />}
+      <main className={`flex-grow-1 ${isHomePage ? "overflow-hidden" : ""}`}>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />

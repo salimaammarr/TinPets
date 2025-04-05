@@ -8,27 +8,50 @@ const Home: React.FC = () => {
         className="position-absolute top-0 start-0 w-100 h-100"
         style={{
           backgroundImage:
-            'linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("/hero-pets.jpg")',
+            "linear-gradient(rgba(45, 27, 59, 0.6), rgba(92, 39, 81, 0.7))",
           backgroundSize: "cover",
           backgroundPosition: "center",
           zIndex: -1,
         }}
       ></div>
 
-      <div className="container">
+      {/* Navigation */}
+      <nav className="position-absolute top-0 start-0 w-100 py-3">
+        <div className="container">
+          <div className="d-flex justify-content-between align-items-center">
+            <Link to="/" className="text-custom-peach text-decoration-none">
+              <h1 className="h3 mb-0">TinPets</h1>
+            </Link>
+            <div className="d-flex gap-3">
+              <Link to="/login" className="btn btn-outline-light btn-sm px-3">
+                Login
+              </Link>
+              <Link
+                to="/create-account"
+                className="btn btn-custom-primary btn-sm px-3"
+              >
+                Sign Up
+              </Link>
+            </div>
+          </div>
+        </div>
+      </nav>
+
+      {/* Hero Content */}
+      <div className="container position-relative" style={{ zIndex: 1 }}>
         <div className="row justify-content-center">
           <div className="col-lg-8 text-center text-light">
             <h1 className="display-3 fw-bold mb-4 text-white">
-              Welcome to TinPets
+              Find Your Perfect Pet
             </h1>
-            <h2 className="h3 mb-4 text-custom-yellow">
-              Find Your Perfect Companion
+            <h2 className="h3 mb-4 text-custom-peach">
+              Connect with Your New Best Friend
             </h2>
             <p className="lead mb-5">
-              Your go-to platform for finding your new furry friend. We connect
-              loving families with pets in need of a forever home. Whether
-              you're looking for a playful pup or a cuddly cat, we're here to
-              help you find your perfect match.
+              Your journey to finding the perfect furry companion starts here.
+              We connect loving families with pets in need of a forever home.
+              Whether you're looking for a playful pup or a cuddly cat, we're
+              here to help make the perfect match.
             </p>
             <div className="d-flex justify-content-center gap-3">
               <Link
@@ -49,6 +72,17 @@ const Home: React.FC = () => {
           </div>
         </div>
       </div>
+
+      {/* Background Image */}
+      <div
+        className="position-absolute top-0 start-0 w-100 h-100"
+        style={{
+          backgroundImage: 'url("/shutterstock-343233627.jpg")',
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          zIndex: -2,
+        }}
+      ></div>
     </div>
   );
 };

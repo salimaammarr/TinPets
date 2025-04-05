@@ -1,14 +1,18 @@
 :root {
-  --primary-yellow: #ffd700; /* Bright yellow */
-  --primary-orange: #ff8c00; /* Dark orange */
-  --primary-navy: #003366; /* Navy blue */
-  --text-dark: #003366; /* Navy for text */
+  --primary-purple: #2d1b3b; /* Deep Purple */
+  --primary-mauve: #5c2751; /* Rich Purple */
+  --primary-brown: #b25c44; /* Warm Brown */
+  --primary-peach: #dfa878; /* Peachy Orange */
+
+  --text-dark: #2d1b3b; /* Deep Purple for text */
   --text-light: #ffffff; /* White text */
   --background-light: #ffffff; /* White background */
-  --background-dark: #003366; /* Navy background */
-  --accent-yellow: #ffe44d; /* Light yellow for hover */
-  --accent-orange: #ffa533; /* Light orange for hover */
-  --accent-navy: #004080; /* Lighter navy for hover */
+  --background-dark: #2d1b3b; /* Deep Purple background */
+
+  --accent-purple: #3d2650; /* Lighter purple for hover */
+  --accent-mauve: #6c3161; /* Lighter mauve for hover */
+  --accent-brown: #c66a50; /* Lighter brown for hover */
+  --accent-peach: #eab68e; /* Lighter peach for hover */
 }
 
 /* Font Imports */
@@ -30,7 +34,7 @@ h5,
 h6 {
   font-family: "Poppins", sans-serif;
   font-weight: 600;
-  color: var(--primary-navy);
+  color: var(--primary-purple);
   margin-bottom: 1rem;
 }
 
@@ -47,9 +51,9 @@ h6 {
 
 /* Button Styles */
 .btn-custom-primary {
-  background-color: var(--primary-yellow);
-  border-color: var(--primary-yellow);
-  color: var(--text-dark);
+  background-color: var(--primary-peach);
+  border-color: var(--primary-peach);
+  color: var(--primary-purple);
   transition: all 0.2s ease;
   font-weight: 500;
   padding: 0.5rem 1.5rem;
@@ -57,15 +61,15 @@ h6 {
 }
 
 .btn-custom-primary:hover {
-  background-color: var(--accent-yellow);
-  border-color: var(--accent-yellow);
-  color: var(--text-dark);
+  background-color: var(--accent-peach);
+  border-color: var(--accent-peach);
+  color: var(--primary-purple);
   transform: translateY(-1px);
 }
 
 .btn-custom-secondary {
-  background-color: var(--primary-orange);
-  border-color: var(--primary-orange);
+  background-color: var(--primary-brown);
+  border-color: var(--primary-brown);
   color: var(--text-light);
   transition: all 0.2s ease;
   font-weight: 500;
@@ -74,8 +78,8 @@ h6 {
 }
 
 .btn-custom-secondary:hover {
-  background-color: var(--accent-orange);
-  border-color: var(--accent-orange);
+  background-color: var(--accent-brown);
+  border-color: var(--accent-brown);
   color: var(--text-light);
   transform: translateY(-1px);
 }
@@ -85,22 +89,30 @@ h6 {
   border-radius: 8px;
   transition: all 0.2s ease;
   background-color: var(--background-light);
-  border: 1px solid var(--primary-yellow);
+  border: 1px solid var(--primary-peach);
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
 }
 
-.border-custom-yellow {
-  border: 1px solid var(--primary-yellow) !important;
+.border-custom-purple {
+  border: 1px solid var(--primary-purple) !important;
 }
 
-.border-custom-orange {
-  border: 1px solid var(--primary-orange) !important;
+.border-custom-mauve {
+  border: 1px solid var(--primary-mauve) !important;
+}
+
+.border-custom-brown {
+  border: 1px solid var(--primary-brown) !important;
+}
+
+.border-custom-peach {
+  border: 1px solid var(--primary-peach) !important;
 }
 
 /* Form Controls */
 .form-control {
   border-radius: 6px;
-  border: 1px solid var(--primary-navy);
+  border: 1px solid var(--primary-purple);
   transition: all 0.2s ease;
   font-family: "Poppins", sans-serif;
   padding: 0.75rem 1rem;
@@ -108,14 +120,14 @@ h6 {
 }
 
 .form-control:focus {
-  border-color: var(--primary-yellow);
-  box-shadow: 0 0 0 0.2rem rgba(255, 215, 0, 0.25);
+  border-color: var(--primary-peach);
+  box-shadow: 0 0 0 0.2rem rgba(223, 168, 120, 0.25);
   background-color: var(--text-light);
 }
 
 .form-select {
   border-radius: 6px;
-  border: 1px solid var(--primary-navy);
+  border: 1px solid var(--primary-purple);
   transition: all 0.2s ease;
   font-family: "Poppins", sans-serif;
   padding: 0.75rem 1rem;
@@ -123,38 +135,47 @@ h6 {
 }
 
 .form-select:focus {
-  border-color: var(--primary-yellow);
-  box-shadow: 0 0 0 0.2rem rgba(255, 215, 0, 0.25);
+  border-color: var(--primary-peach);
+  box-shadow: 0 0 0 0.2rem rgba(223, 168, 120, 0.25);
   background-color: var(--text-light);
 }
 
 /* Text Styles */
-.text-custom-navy {
-  color: var(--primary-navy) !important;
+.text-custom-purple {
+  color: var(--primary-purple) !important;
   font-weight: 500;
 }
 
-.text-custom-yellow {
-  color: var(--primary-yellow) !important;
+.text-custom-mauve {
+  color: var(--primary-mauve) !important;
   font-weight: 500;
 }
 
-.text-custom-orange {
-  color: var(--primary-orange) !important;
+.text-custom-brown {
+  color: var(--primary-brown) !important;
+  font-weight: 500;
+}
+
+.text-custom-peach {
+  color: var(--primary-peach) !important;
   font-weight: 500;
 }
 
 /* Background Colors */
-.bg-custom-navy {
-  background-color: var(--primary-navy) !important;
+.bg-custom-purple {
+  background-color: var(--primary-purple) !important;
 }
 
-.bg-custom-yellow {
-  background-color: var(--primary-yellow) !important;
+.bg-custom-mauve {
+  background-color: var(--primary-mauve) !important;
 }
 
-.bg-custom-orange {
-  background-color: var(--primary-orange) !important;
+.bg-custom-brown {
+  background-color: var(--primary-brown) !important;
+}
+
+.bg-custom-peach {
+  background-color: var(--primary-peach) !important;
 }
 
 /* Alert Styles */
@@ -167,34 +188,34 @@ h6 {
 }
 
 .alert-success {
-  background-color: rgba(255, 215, 0, 0.1);
-  color: var(--primary-navy);
-  border: 1px solid var(--primary-yellow);
+  background-color: rgba(223, 168, 120, 0.1);
+  color: var(--primary-purple);
+  border: 1px solid var(--primary-peach);
 }
 
 .alert-danger {
-  background-color: rgba(255, 140, 0, 0.1);
-  color: var(--primary-orange);
-  border: 1px solid var(--primary-orange);
+  background-color: rgba(178, 92, 68, 0.1);
+  color: var(--primary-brown);
+  border: 1px solid var(--primary-brown);
 }
 
 /* Section Dividers */
 .border-bottom {
-  border-bottom: 1px solid var(--primary-yellow) !important;
+  border-bottom: 1px solid var(--primary-peach) !important;
   padding-bottom: 1rem;
   margin-bottom: 1rem;
 }
 
 /* Links */
 a {
-  color: var(--primary-navy);
+  color: var(--primary-purple);
   text-decoration: none;
   transition: all 0.2s ease;
   font-weight: 500;
 }
 
 a:hover {
-  color: var(--primary-orange);
+  color: var(--primary-peach);
   text-decoration: underline;
 }
 
@@ -202,22 +223,22 @@ a:hover {
 .form-label {
   font-weight: 500;
   margin-bottom: 0.5rem;
-  color: var(--primary-navy);
+  color: var(--primary-purple);
 }
 
 /* Radio and Checkbox Styles */
 .form-check-input {
-  border-color: var(--primary-navy);
+  border-color: var(--primary-purple);
 }
 
 .form-check-input:checked {
-  background-color: var(--primary-yellow);
-  border-color: var(--primary-yellow);
+  background-color: var(--primary-peach);
+  border-color: var(--primary-peach);
 }
 
 .form-check-input:focus {
-  border-color: var(--primary-yellow);
-  box-shadow: 0 0 0 0.2rem rgba(255, 215, 0, 0.25);
+  border-color: var(--primary-peach);
+  box-shadow: 0 0 0 0.2rem rgba(223, 168, 120, 0.25);
 }
 
 /* Container Padding */
@@ -244,13 +265,13 @@ li {
 /* Small Text */
 .small {
   font-size: 0.875rem;
-  color: var(--primary-navy);
+  color: var(--primary-purple);
   font-weight: 400;
 }
 
 /* Text Muted */
 .text-muted {
-  color: var(--primary-navy) !important;
+  color: var(--primary-purple) !important;
   font-weight: 400;
 }
 
@@ -274,6 +295,7 @@ li {
 .navbar {
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   transition: all 0.3s ease;
+  background-color: var(--primary-purple) !important;
 }
 
 .navbar-brand {
@@ -293,13 +315,13 @@ li {
 }
 
 .nav-link:hover {
-  color: var(--primary-yellow) !important;
-  background-color: rgba(255, 215, 0, 0.1);
+  color: var(--primary-peach) !important;
+  background-color: rgba(223, 168, 120, 0.1);
 }
 
 .nav-active {
-  color: var(--primary-yellow) !important;
-  background-color: rgba(255, 215, 0, 0.15);
+  color: var(--primary-peach) !important;
+  background-color: rgba(223, 168, 120, 0.15);
 }
 
 .navbar-toggler:focus {
@@ -323,8 +345,8 @@ li {
 }
 
 .btn-custom-primary.nav-link:hover {
-  background-color: var(--accent-yellow);
-  color: var(--text-dark) !important;
+  background-color: var(--accent-peach);
+  color: var(--primary-purple) !important;
   transform: translateY(-1px);
 }
 
@@ -347,24 +369,24 @@ li {
 
 /* Footer Styles */
 footer {
-  background-color: var(--primary-navy) !important;
+  background-color: var(--primary-purple) !important;
   color: var(--text-light);
   font-family: "Poppins", sans-serif;
 }
 
 footer h5 {
-  color: var(--primary-yellow);
+  color: var(--primary-peach);
   font-weight: 600;
 }
 
 footer a {
-  color: var(--primary-yellow);
+  color: var(--primary-peach);
   text-decoration: none;
   transition: all 0.2s ease;
 }
 
 footer a:hover {
-  color: var(--primary-orange);
+  color: var(--accent-peach);
   text-decoration: underline;
 }
 
@@ -396,7 +418,7 @@ footer a:hover {
 .hero-section {
   position: relative;
   overflow: hidden;
-  background-color: #1a1a1a;
+  background-color: var(--primary-purple);
 }
 
 .hero-section::before {
@@ -408,25 +430,64 @@ footer a:hover {
   bottom: 0;
   background: linear-gradient(
     to bottom,
-    rgba(0, 0, 0, 0.4) 0%,
-    rgba(0, 0, 0, 0.6) 100%
+    rgba(45, 27, 59, 0.8) 0%,
+    rgba(92, 39, 81, 0.85) 100%
   );
   z-index: -1;
 }
 
 .hero-section h1 {
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  font-size: 3.5rem;
+  letter-spacing: -0.02em;
+}
+
+.hero-section h2 {
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
 }
 
 .hero-section .lead {
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+  font-size: 1.25rem;
+  font-weight: 300;
+  line-height: 1.8;
 }
 
 .hero-section .btn {
   transition: all 0.3s ease;
+  font-weight: 500;
 }
 
 .hero-section .btn:hover {
   transform: translateY(-2px);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.hero-section nav {
+  background: linear-gradient(
+    to bottom,
+    rgba(45, 27, 59, 0.9) 0%,
+    rgba(45, 27, 59, 0) 100%
+  );
+}
+
+.hero-section nav .btn {
+  font-weight: 500;
+  padding: 0.5rem 1.25rem;
+}
+
+@media (max-width: 768px) {
+  .hero-section h1 {
+    font-size: 2.5rem;
+  }
+
+  .hero-section .lead {
+    font-size: 1.1rem;
+    line-height: 1.6;
+  }
+
+  .hero-section .btn-lg {
+    padding: 0.5rem 1.5rem !important;
+    font-size: 1rem;
+  }
 }
