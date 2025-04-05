@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import "./ContactUs.css";
 
 interface ContactFormData {
   name: string;
@@ -78,99 +77,126 @@ const ContactUs: React.FC = () => {
   };
 
   return (
-    <div className="contact-us">
-      <h1>Let's get in touch!</h1>
-      <p className="intro">
-        We value your feedback and are here to assist you. If you have any
-        questions, concerns, or simply want to get in touch, please feel free to
-        contact us. Your satisfaction and the well-being of our furry friends
-        are our top priorities.
-      </p>
+    <div className="container py-4">
+      <div className="row justify-content-center">
+        <div className="col-lg-8">
+          <div className="card shadow-sm">
+            <div className="card-body p-4">
+              <h1 className="text-center mb-3">Let's get in touch!</h1>
+              <p className="text-muted text-center mb-4">
+                We value your feedback and are here to assist you. If you have
+                any questions, concerns, or simply want to get in touch, please
+                feel free to contact us. Your satisfaction and the well-being of
+                our furry friends are our top priorities.
+              </p>
 
-      <form onSubmit={handleSubmit}>
-        <div className="form-group">
-          <label htmlFor="name">Name *</label>
-          <input
-            type="text"
-            id="name"
-            name="name"
-            value={formData.name}
-            onChange={handleInputChange}
-            required
-          />
+              <form onSubmit={handleSubmit} className="mb-4">
+                <div className="mb-3">
+                  <label htmlFor="name" className="form-label">
+                    Name *
+                  </label>
+                  <input
+                    type="text"
+                    className="form-control"
+                    id="name"
+                    name="name"
+                    value={formData.name}
+                    onChange={handleInputChange}
+                    required
+                  />
+                </div>
+
+                <div className="mb-3">
+                  <label htmlFor="email" className="form-label">
+                    Email *
+                  </label>
+                  <input
+                    type="email"
+                    className="form-control"
+                    id="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleInputChange}
+                    required
+                  />
+                </div>
+
+                <div className="mb-3">
+                  <label htmlFor="subject" className="form-label">
+                    Subject
+                  </label>
+                  <input
+                    type="text"
+                    className="form-control"
+                    id="subject"
+                    name="subject"
+                    value={formData.subject}
+                    onChange={handleInputChange}
+                  />
+                </div>
+
+                <div className="mb-4">
+                  <label htmlFor="message" className="form-label">
+                    Message *
+                  </label>
+                  <textarea
+                    className="form-control"
+                    id="message"
+                    name="message"
+                    value={formData.message}
+                    onChange={handleInputChange}
+                    rows={5}
+                    required
+                  />
+                </div>
+
+                <div className="d-grid gap-2 d-md-flex justify-content-center">
+                  <button type="submit" className="btn btn-primary px-4">
+                    Send Message
+                  </button>
+                  <button
+                    type="button"
+                    className="btn btn-secondary px-4"
+                    onClick={() =>
+                      setFormData({
+                        name: "",
+                        email: "",
+                        subject: "",
+                        message: "",
+                      })
+                    }
+                  >
+                    Reset
+                  </button>
+                </div>
+
+                {submitStatus.type && (
+                  <div
+                    className={`alert ${
+                      submitStatus.type === "success"
+                        ? "alert-success"
+                        : "alert-danger"
+                    } mt-3 text-center`}
+                  >
+                    {submitStatus.message}
+                  </div>
+                )}
+              </form>
+
+              <div className="border-top pt-4">
+                <h2 className="h4 mb-3">Additional Contact Information</h2>
+                <p className="text-muted mb-3">
+                  You can also reach us through the following channels:
+                </p>
+                <ul className="list-unstyled text-muted">
+                  <li className="mb-2">Email: info@tinpets.com</li>
+                  <li className="mb-2">Phone: (555) 123-4567</li>
+                  <li>Hours: Monday - Friday, 9:00 AM - 5:00 PM EST</li>
+                </ul>
+              </div>
+            </div>
+          </div>
         </div>
-
-        <div className="form-group">
-          <label htmlFor="email">Email *</label>
-          <input
-            type="email"
-            id="email"
-            name="email"
-            value={formData.email}
-            onChange={handleInputChange}
-            required
-          />
-        </div>
-
-        <div className="form-group">
-          <label htmlFor="subject">Subject</label>
-          <input
-            type="text"
-            id="subject"
-            name="subject"
-            value={formData.subject}
-            onChange={handleInputChange}
-          />
-        </div>
-
-        <div className="form-group">
-          <label htmlFor="message">Message *</label>
-          <textarea
-            id="message"
-            name="message"
-            value={formData.message}
-            onChange={handleInputChange}
-            rows={5}
-            required
-          />
-        </div>
-
-        <div className="buttons">
-          <button type="submit">Send Message</button>
-          <button
-            type="button"
-            onClick={() =>
-              setFormData({
-                name: "",
-                email: "",
-                subject: "",
-                message: "",
-              })
-            }
-          >
-            Reset
-          </button>
-        </div>
-
-        {submitStatus.type && (
-          <p
-            className={`status-message ${
-              submitStatus.type === "success" ? "success" : "error"
-            }`}
-          >
-            {submitStatus.message}
-          </p>
-        )}
-      </form>
-
-      <div className="contact-info">
-        <h2>Additional Contact Information</h2>
-        <p>You can also reach us through the following channels:</p>
-        <ul>
-          <li>Email: info@tinpets.com</li>
-          <li>Phone: (555) 123-4567</li>
-          <li>Hours: Monday - Friday, 9:00 AM - 5:00 PM EST</li>
-        </ul>
       </div>
     </div>
   );
