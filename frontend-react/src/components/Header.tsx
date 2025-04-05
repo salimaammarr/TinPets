@@ -10,8 +10,14 @@ const Header: React.FC = () => {
     <header className="bg-primary text-white py-2">
       <nav className="navbar navbar-expand-lg navbar-dark">
         <div className="container">
-          <Link className="navbar-brand fw-bold" to="/">
-            TinPets
+          <Link className="navbar-brand d-flex align-items-center" to="/">
+            <img
+              src="/logo.png"
+              alt="TinPets Logo"
+              height="30"
+              className="me-2"
+            />
+            <span className="fw-bold">TinPets</span>
           </Link>
           <button
             className="navbar-toggler"

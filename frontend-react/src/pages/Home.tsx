@@ -8,7 +8,15 @@ const Home: React.FC = () => {
         <div className="col-lg-8">
           <div className="card shadow-sm">
             <div className="card-body p-4">
-              <h1 className="text-center mb-4">Welcome to TinPets!</h1>
+              <div className="text-center mb-4">
+                <img
+                  src="/logo.png"
+                  alt="TinPets Logo"
+                  height="60"
+                  className="mb-3"
+                />
+                <h1 className="mb-0">Welcome to TinPets!</h1>
+              </div>
               <p className="text-muted text-center">
                 TinPets is your go-to platform for finding your new furry
                 friend. Our mission is to connect loving families with pets in

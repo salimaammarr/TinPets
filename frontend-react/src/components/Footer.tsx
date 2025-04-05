@@ -7,7 +7,15 @@ const Footer: React.FC = () => {
       <div className="container">
         <div className="row">
           <div className="col-md-4 mb-3 mb-md-0">
-            <h5>TinPets</h5>
+            <div className="d-flex align-items-center mb-2">
+              <img
+                src="/logo.png"
+                alt="TinPets Logo"
+                height="25"
+                className="me-2"
+              />
+              <h5 className="mb-0">TinPets</h5>
+            </div>
             <p className="text-muted">Finding homes for pets in need.</p>
           </div>
           <div className="col-md-4 mb-3 mb-md-0">
