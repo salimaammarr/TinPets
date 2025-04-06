@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { useNavigate, useLocation, Link } from "react-router-dom";
 
 type AuthMode = "login" | "signup";
 
@@ -10,6 +10,7 @@ interface FormData {
 }
 
 const Auth: React.FC = () => {
+  const location = useLocation();
   const [mode, setMode] = useState<AuthMode>("signup");
   const [formData, setFormData] = useState<FormData>({
     username: "",
@@ -18,6 +19,11 @@ const Auth: React.FC = () => {
   });
   const [message, setMessage] = useState("");
   const navigate = useNavigate();
+
+  // Set initial mode based on URL
+  useEffect(() => {
+    setMode(location.pathname === "/login" ? "login" : "signup");
+  }, [location.pathname]);
 
   const validateForm = () => {
     // Username validation: letters and digits only
@@ -69,10 +75,9 @@ const Auth: React.FC = () => {
 
       if (response.ok) {
         if (mode === "login") {
-          // Store the token or user data in localStorage/sessionStorage
           localStorage.setItem("user", JSON.stringify(data));
         }
-        navigate("/"); // Redirect to home page after successful auth
+        navigate("/");
       } else {
         setMessage(data.message || `Failed to ${mode}. Please try again.`);
       }
@@ -87,112 +92,113 @@ const Auth: React.FC = () => {
       ...prev,
       [name]: value,
     }));
-  };
-
-  const toggleMode = () => {
-    setMode(mode === "login" ? "signup" : "login");
-    setMessage("");
+    setMessage(""); // Clear error message when user starts typing
   };
 
   return (
-    <div className="container py-5">
-      <div className="row justify-content-center">
-        <div className="col-md-6 col-lg-4">
-          <div className="card shadow-sm border-custom-peach">
-            <div className="card-body p-4">
-              <div className="text-center mb-4">
+    <div className="auth-page min-vh-100 d-flex align-items-center py-5">
+      <div className="container">
+        <div className="row justify-content-center">
+          <div className="col-md-6 col-lg-4">
+            <div className="text-center mb-4">
+              <Link to="/">
                 <img
                   src="/logo.png"
                   alt="TinPets Logo"
-                  className="logo-img mb-3"
-                  style={{ height: "60px" }}
+                  className="logo-img mb-4"
+                  style={{ height: "80px" }}
                 />
-                <h1 className="h3 text-custom-purple">
-                  {mode === "login" ? "Welcome Back!" : "Create Account"}
+              </Link>
+            </div>
+
+            <div className="card shadow border-custom-peach">
+              <div className="card-body p-4">
+                <h1 className="h3 text-center text-custom-purple mb-4">
+                  {mode === "login" ? "Welcome Back!" : "Create Your Account"}
                 </h1>
-              </div>
 
-              <form onSubmit={handleSubmit}>
-                <div className="mb-3">
-                  <label
-                    htmlFor="username"
-                    className="form-label text-custom-purple"
-                  >
-                    Username
-                  </label>
-                  <input
-                    type="text"
-                    className="form-control"
-                    id="username"
-                    name="username"
-                    value={formData.username}
-                    onChange={handleInputChange}
-                    required
-                  />
-                </div>
-
-                <div className="mb-3">
-                  <label
-                    htmlFor="password"
-                    className="form-label text-custom-purple"
-                  >
-                    Password
-                  </label>
-                  <input
-                    type="password"
-                    className="form-control"
-                    id="password"
-                    name="password"
-                    value={formData.password}
-                    onChange={handleInputChange}
-                    required
-                  />
-                </div>
-
-                {mode === "signup" && (
-                  <div className="mb-4">
+                <form onSubmit={handleSubmit}>
+                  <div className="mb-3">
                     <label
-                      htmlFor="confirmPassword"
+                      htmlFor="username"
                       className="form-label text-custom-purple"
                     >
-                      Confirm Password
+                      Username
+                    </label>
+                    <input
+                      type="text"
+                      className="form-control"
+                      id="username"
+                      name="username"
+                      value={formData.username}
+                      onChange={handleInputChange}
+                      required
+                      autoFocus
+                    />
+                  </div>
+
+                  <div className="mb-3">
+                    <label
+                      htmlFor="password"
+                      className="form-label text-custom-purple"
+                    >
+                      Password
                     </label>
                     <input
                       type="password"
                       className="form-control"
-                      id="confirmPassword"
-                      name="confirmPassword"
-                      value={formData.confirmPassword}
+                      id="password"
+                      name="password"
+                      value={formData.password}
                       onChange={handleInputChange}
                       required
                     />
                   </div>
-                )}
 
-                <div className="d-grid mb-3">
-                  <button type="submit" className="btn btn-custom-primary">
-                    {mode === "login" ? "Login" : "Create Account"}
-                  </button>
-                </div>
+                  {mode === "signup" && (
+                    <div className="mb-4">
+                      <label
+                        htmlFor="confirmPassword"
+                        className="form-label text-custom-purple"
+                      >
+                        Confirm Password
+                      </label>
+                      <input
+                        type="password"
+                        className="form-control"
+                        id="confirmPassword"
+                        name="confirmPassword"
+                        value={formData.confirmPassword}
+                        onChange={handleInputChange}
+                        required
+                      />
+                    </div>
+                  )}
 
-                <div className="text-center">
-                  <button
-                    type="button"
-                    className="btn btn-link text-custom-brown"
-                    onClick={toggleMode}
-                  >
-                    {mode === "login"
-                      ? "Don't have an account? Sign up"
-                      : "Already have an account? Login"}
-                  </button>
-                </div>
-
-                {message && (
-                  <div className="alert alert-danger mt-3 text-center">
-                    {message}
+                  <div className="d-grid gap-2">
+                    <button
+                      type="submit"
+                      className="btn btn-custom-primary py-2"
+                    >
+                      {mode === "login" ? "Login" : "Create Account"}
+                    </button>
+                    <Link
+                      to={mode === "login" ? "/create-account" : "/login"}
+                      className="btn btn-link text-custom-brown"
+                    >
+                      {mode === "login"
+                        ? "Don't have an account? Sign up"
+                        : "Already have an account? Login"}
+                    </Link>
                   </div>
-                )}
-              </form>
+
+                  {message && (
+                    <div className="alert alert-danger mt-3 text-center">
+                      {message}
+                    </div>
+                  )}
+                </form>
+              </div>
             </div>
           </div>
         </div>

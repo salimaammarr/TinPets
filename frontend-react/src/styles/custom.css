@@ -40,9 +40,9 @@ h6 {
 
 /* Logo Styles */
 .logo-img {
-  height: 60px;
+  height: 80px;
   width: auto;
-  transition: all 0.2s ease;
+  transition: transform 0.3s ease;
 }
 
 .logo-img:hover {
@@ -500,4 +500,44 @@ footer a:hover {
     padding: 0.5rem 1.5rem !important;
     font-size: 1rem;
   }
+}
+
+/* Auth Page Styles */
+.auth-page {
+  background: linear-gradient(
+    135deg,
+    var(--primary-purple) 0%,
+    var(--primary-mauve) 100%
+  );
+}
+
+.auth-page .card {
+  border-radius: 12px;
+  border-width: 2px;
+}
+
+.auth-page .form-control {
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--primary-purple);
+  transition: all 0.2s ease;
+}
+
+.auth-page .form-control:focus {
+  border-color: var(--primary-peach);
+  box-shadow: 0 0 0 0.2rem rgba(223, 168, 120, 0.15);
+}
+
+.auth-page .btn-custom-primary {
+  border-radius: 8px;
+  font-weight: 500;
+}
+
+.auth-page .btn-link {
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.auth-page .btn-link:hover {
+  text-decoration: underline;
 }
