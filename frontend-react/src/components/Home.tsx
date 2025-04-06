@@ -26,10 +26,9 @@ const Home: React.FC = () => {
               <img
                 src="/logo.png"
                 alt="TinPets Logo"
-                className="logo-img-hero me-2"
-                style={{ height: "40px" }}
+                className="logo-img-hero"
+                style={{ height: "60px" }}
               />
-              <h1 className="h3 mb-0">TinPets</h1>
             </Link>
             <div className="d-flex gap-3">
               <Link to="/login" className="btn btn-outline-light btn-sm px-3">
@@ -62,21 +61,30 @@ const Home: React.FC = () => {
               Whether you're looking for a playful pup or a cuddly cat, we're
               here to help make the perfect match.
             </p>
-            <div className="d-flex justify-content-center gap-3">
+            <div className="d-flex flex-column align-items-center gap-4">
               <Link
-                to="/find-pets"
-                className="btn btn-custom-primary btn-lg px-4 py-2"
-              >
-                <i className="fas fa-search me-2"></i>
-                Find Pets
-              </Link>
-              <Link
-                to="/pet-care"
-                className="btn btn-outline-light btn-lg px-4 py-2"
+                to="/create-account"
+                className="btn btn-custom-primary btn-lg px-5 py-3"
               >
                 <i className="fas fa-paw me-2"></i>
-                Pet Care Guide
+                Get Started
               </Link>
+              <div className="d-flex gap-3">
+                <Link
+                  to="/find-pets"
+                  className="btn btn-outline-light px-4 py-2"
+                >
+                  <i className="fas fa-search me-2"></i>
+                  Find Pets
+                </Link>
+                <Link
+                  to="/pet-care"
+                  className="btn btn-outline-light px-4 py-2"
+                >
+                  <i className="fas fa-heart me-2"></i>
+                  Pet Care Guide
+                </Link>
+              </div>
             </div>
           </div>
         </div>

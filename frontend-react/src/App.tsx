@@ -11,8 +11,7 @@ import "./styles/custom.css";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Home from "./components/Home";
-import Login from "./components/Login";
-import CreateAccount from "./components/CreateAccount";
+import Auth from "./components/Auth";
 import FindPets from "./components/FindPets";
 import PetCare from "./components/pages/PetCare";
 import ContactUs from "./components/ContactUs";
@@ -23,6 +22,7 @@ import Giveaway from "./components/Giveaway";
 const AppContent: React.FC = () => {
   const location = useLocation();
   const isHomePage = location.pathname === "/";
+  const isAuthPage = ["/login", "/create-account"].includes(location.pathname);
 
   return (
     <div className="d-flex flex-column min-vh-100">
@@ -30,8 +30,8 @@ const AppContent: React.FC = () => {
       <main className={`flex-grow-1 ${isHomePage ? "overflow-hidden" : ""}`}>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/create-account" element={<CreateAccount />} />
+          <Route path="/login" element={<Auth />} />
+          <Route path="/create-account" element={<Auth />} />
           <Route path="/find-pets" element={<FindPets />} />
           <Route path="/pet-care" element={<PetCare />} />
           <Route path="/contact" element={<ContactUs />} />
@@ -39,7 +39,7 @@ const AppContent: React.FC = () => {
           <Route path="/giveaway" element={<Giveaway />} />
         </Routes>
       </main>
-      {!isHomePage && <Footer />}
+      {!isHomePage && !isAuthPage && <Footer />}
     </div>
   );
 };
