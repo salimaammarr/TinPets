@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate, useLocation, Link } from "react-router-dom";
+import { auth } from "../services/api";
+import { AuthResponse } from "../types/api";
 
 type AuthMode = "login" | "signup";
 
@@ -59,30 +61,23 @@ const Auth: React.FC = () => {
     }
 
     try {
-      const endpoint = mode === "login" ? "/api/login" : "/api/createAccount";
-      const response = await fetch(endpoint, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          username: formData.username,
-          password: formData.password,
-        }),
-      });
+      const response =
+        mode === "login"
+          ? await auth.login(formData.username, formData.password)
+          : await auth.register(formData.username, formData.password);
 
-      const data = await response.json();
+      const { token, userId } = response.data;
 
-      if (response.ok) {
-        if (mode === "login") {
-          localStorage.setItem("user", JSON.stringify(data));
-        }
-        navigate("/");
-      } else {
-        setMessage(data.message || `Failed to ${mode}. Please try again.`);
+      if (mode === "login") {
+        localStorage.setItem("token", token);
+        localStorage.setItem("userId", userId);
       }
-    } catch (error) {
-      setMessage("An error occurred. Please try again later.");
+      navigate("/");
+    } catch (error: any) {
+      setMessage(
+        error.response?.data?.message || `Failed to ${mode}. Please try again.`
+      );
+      console.error("Authentication error:", error);
     }
   };
 
