@@ -62,13 +62,37 @@ const FindPets: React.FC = () => {
     }
 
     try {
-      const response = await fetch("/api/findPets", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData),
-      });
+      // Build query parameters
+      const queryParams = new URLSearchParams();
+      if (formData.species !== "No preference") {
+        queryParams.append("species", formData.species);
+      }
+      if (formData.breed !== "No preference") {
+        queryParams.append("breed", formData.breed);
+      }
+      if (formData.ageCategory !== "No preference") {
+        queryParams.append("age", formData.ageCategory);
+      }
+      if (formData.gender !== "No preference") {
+        queryParams.append("gender", formData.gender);
+      }
+      if (formData.social) {
+        queryParams.append(
+          "isSocial",
+          formData.social === "Yes" ? "true" : "false"
+        );
+      }
+
+      const response = await fetch(
+        `http://localhost:5002/api/pets/search/filters?${queryParams.toString()}`,
+        {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          credentials: "include",
+        }
+      );
 
       if (response.ok) {
         // Handle successful search - redirect to results page or update UI
@@ -102,14 +126,19 @@ const FindPets: React.FC = () => {
           <div className="card shadow-sm border-custom-green">
             <div className="card-body p-4">
               <h1 className="text-center mb-3 text-custom-brown">
-                Find your future bestfriend!
+                Find Your Perfect Pet
               </h1>
               <p className="text-muted text-center mb-4">
-                Looking for a specific type of pet? Use our search form to find
-                the perfect match for your family. Choose the species, breed,
-                preferred age, gender, and more to narrow down your search and
-                discover pets that fit your criteria.
+                Use the search form below to find pets that match your
+                preferences. You can search by species, breed, age, gender, and
+                more.
               </p>
+
+              {errorMessage && (
+                <div className="alert alert-danger" role="alert">
+                  {errorMessage}
+                </div>
+              )}
 
               <form onSubmit={handleSubmit}>
                 <div className="mb-3">
@@ -128,6 +157,7 @@ const FindPets: React.FC = () => {
                   >
                     <option value="dog">Dog</option>
                     <option value="cat">Cat</option>
+                    <option value="No preference">No preference</option>
                   </select>
                 </div>
 
@@ -136,7 +166,7 @@ const FindPets: React.FC = () => {
                     htmlFor="breed"
                     className="form-label text-custom-brown"
                   >
-                    Preferred breed:
+                    Pet breed:
                   </label>
                   <input
                     type="text"
@@ -170,7 +200,7 @@ const FindPets: React.FC = () => {
                     htmlFor="ageCategory"
                     className="form-label text-custom-brown"
                   >
-                    Preferred age:
+                    Pet age:
                   </label>
                   <select
                     id="ageCategory"
@@ -179,12 +209,11 @@ const FindPets: React.FC = () => {
                     value={formData.ageCategory}
                     onChange={handleInputChange}
                   >
-                    <option>Less than 1 year</option>
-                    <option>1 - 3 years</option>
-                    <option>3 - 7 years</option>
-                    <option>7 - 10 years</option>
-                    <option>More than 10 years</option>
-                    <option>No preference</option>
+                    <option value="No preference">No preference</option>
+                    <option value="Less than 1 year">Less than 1 year</option>
+                    <option value="1-3 years">1-3 years</option>
+                    <option value="4-7 years">4-7 years</option>
+                    <option value="8+ years">8+ years</option>
                   </select>
                 </div>
 
@@ -193,7 +222,7 @@ const FindPets: React.FC = () => {
                     htmlFor="gender"
                     className="form-label text-custom-brown"
                   >
-                    Preferred gender:
+                    Pet gender:
                   </label>
                   <select
                     id="gender"
@@ -202,25 +231,23 @@ const FindPets: React.FC = () => {
                     value={formData.gender}
                     onChange={handleInputChange}
                   >
-                    <option>Male</option>
-                    <option>Female</option>
-                    <option>No preference</option>
+                    <option value="No preference">No preference</option>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
                   </select>
                 </div>
 
                 <div className="mb-4">
-                  <p className="mb-2 text-custom-brown">
-                    Do you need your pet to be social?
-                  </p>
+                  <p className="mb-2 text-custom-brown">Is your pet social?</p>
                   <div className="d-flex gap-4">
                     <div className="form-check">
                       <input
                         type="radio"
                         id="socialYes"
                         name="social"
-                        value="yes"
+                        value="Yes"
                         className="form-check-input"
-                        checked={formData.social === "yes"}
+                        checked={formData.social === "Yes"}
                         onChange={handleInputChange}
                       />
                       <label
@@ -235,9 +262,9 @@ const FindPets: React.FC = () => {
                         type="radio"
                         id="socialNo"
                         name="social"
-                        value="no"
+                        value="No"
                         className="form-check-input"
-                        checked={formData.social === "no"}
+                        checked={formData.social === "No"}
                         onChange={handleInputChange}
                       />
                       <label
@@ -252,7 +279,7 @@ const FindPets: React.FC = () => {
 
                 <div className="d-grid gap-2 d-md-flex justify-content-center">
                   <button type="submit" className="btn btn-custom-primary px-4">
-                    Find my bestfriend
+                    Search
                   </button>
                   <button
                     type="button"
@@ -262,12 +289,6 @@ const FindPets: React.FC = () => {
                     Reset
                   </button>
                 </div>
-
-                {errorMessage && (
-                  <div className="alert alert-danger mt-3 text-center">
-                    {errorMessage}
-                  </div>
-                )}
               </form>
             </div>
           </div>
