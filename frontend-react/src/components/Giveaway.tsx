@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useAuth } from "../contexts/AuthContext";
 
 interface PetFormData {
   species: string;
@@ -12,6 +13,7 @@ interface PetFormData {
 }
 
 const Giveaway: React.FC = () => {
+  const { user } = useAuth();
   const [formData, setFormData] = useState<PetFormData>({
     species: "dog",
     breed: "",
@@ -82,12 +84,24 @@ const Giveaway: React.FC = () => {
     }
 
     try {
-      const response = await fetch("/api/registerPet", {
+      const response = await fetch("http://localhost:5002/api/pets", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
+          Authorization: `Bearer ${user?.token}`,
         },
-        body: JSON.stringify(formData),
+        credentials: "include",
+        body: JSON.stringify({
+          species: formData.species,
+          breed: formData.breed,
+          age: formData.ageCategory,
+          gender: formData.gender,
+          description: formData.more,
+          status: "Available",
+          ownerName: formData.ownerName,
+          ownerEmail: formData.ownerEmail,
+          isSocial: formData.social === "Yes",
+        }),
       });
 
       if (response.ok) {
@@ -106,10 +120,10 @@ const Giveaway: React.FC = () => {
         setNoPreferenceBreed(false);
       } else {
         const data = await response.json();
-        setMessage(data.message || "Failed to register pet. Please try again.");
+        setMessage(data.message || "Error registering pet. Please try again.");
       }
     } catch (error) {
-      setMessage("An error occurred. Please try again later.");
+      setMessage("Error connecting to server. Please try again later.");
     }
   };
 
@@ -129,187 +143,165 @@ const Giveaway: React.FC = () => {
   };
 
   return (
-    <div className="container py-4">
+    <div className="container py-5">
       <div className="row justify-content-center">
-        <div className="col-lg-8">
-          <div className="card shadow-sm border-custom-green">
+        <div className="col-md-8">
+          <div className="card shadow-lg border-0 rounded-4">
             <div className="card-body p-4">
-              <h1 className="text-center mb-3 text-custom-brown">
-                Welcome to pets giveaway!
-              </h1>
+              <h2 className="text-center text-custom-navy mb-4">
+                Register Your Pet for Giveaway
+              </h2>
               <p className="text-muted text-center mb-4">
-                If you have a pet that needs a new home, you've come to the
-                right place. Share details about your cat or dog, including
-                their breed, age, gender, and temperament. Your furry friend
-                could find a loving family through PetAdopt. Fill out the form
-                to get started.
+                Fill out the form below to register your pet for our giveaway
+                program.
               </p>
+
+              {message && (
+                <div
+                  className={`alert ${
+                    message.includes("successful")
+                      ? "alert-success"
+                      : "alert-danger"
+                  }`}
+                  role="alert"
+                >
+                  {message}
+                </div>
+              )}
 
               <form onSubmit={handleSubmit}>
                 <div className="mb-3">
-                  <label
-                    htmlFor="species"
-                    className="form-label text-custom-brown"
-                  >
-                    Species:
+                  <label className="form-label text-custom-brown">
+                    Pet Species
                   </label>
                   <select
-                    id="species"
-                    name="species"
                     className="form-select"
+                    name="species"
                     value={formData.species}
                     onChange={handleInputChange}
+                    required
                   >
                     <option value="dog">Dog</option>
                     <option value="cat">Cat</option>
+                    <option value="other">Other</option>
                   </select>
                 </div>
 
-                <div className="mb-4">
-                  <label
-                    htmlFor="breed"
-                    className="form-label text-custom-brown"
-                  >
-                    Pet breed:
+                <div className="mb-3">
+                  <label className="form-label text-custom-brown">
+                    Breed Preference
                   </label>
-                  <input
-                    type="text"
-                    id="breed"
-                    name="breed"
-                    className="form-control mb-2"
-                    value={formData.breed}
-                    onChange={handleInputChange}
-                    disabled={noPreferenceBreed}
-                  />
-                  <div className="form-check">
+                  <div className="form-check mb-2">
                     <input
-                      type="radio"
-                      id="mixedBreed"
-                      name="breedPreference"
                       className="form-check-input"
+                      type="radio"
+                      name="breedPreference"
+                      id="specificBreed"
+                      checked={!noPreferenceBreed}
+                      onChange={handleBreedPreferenceChange}
+                    />
+                    <label className="form-check-label" htmlFor="specificBreed">
+                      Specific Breed
+                    </label>
+                  </div>
+                  {!noPreferenceBreed && (
+                    <input
+                      type="text"
+                      className="form-control"
+                      name="breed"
+                      value={formData.breed}
+                      onChange={handleInputChange}
+                      placeholder="Enter breed"
+                    />
+                  )}
+                  <div className="form-check mt-2">
+                    <input
+                      className="form-check-input"
+                      type="radio"
+                      name="breedPreference"
+                      id="mixedBreed"
                       checked={noPreferenceBreed}
                       onChange={handleBreedPreferenceChange}
                     />
-                    <label
-                      className="form-check-label text-custom-brown"
-                      htmlFor="mixedBreed"
-                    >
-                      Mixed breed
+                    <label className="form-check-label" htmlFor="mixedBreed">
+                      Mixed Breed (No Preference)
                     </label>
                   </div>
                 </div>
 
                 <div className="mb-3">
-                  <label
-                    htmlFor="ageCategory"
-                    className="form-label text-custom-brown"
-                  >
-                    Pet age:
+                  <label className="form-label text-custom-brown">
+                    Age Category
                   </label>
                   <select
-                    id="ageCategory"
-                    name="ageCategory"
                     className="form-select"
+                    name="ageCategory"
                     value={formData.ageCategory}
                     onChange={handleInputChange}
+                    required
                   >
-                    <option>Less than 1 year</option>
-                    <option>1 - 3 years</option>
-                    <option>3 - 7 years</option>
-                    <option>7 - 10 years</option>
-                    <option>More than 10 years</option>
+                    <option value="Less than 1 year">Less than 1 year</option>
+                    <option value="1-3 years">1-3 years</option>
+                    <option value="4-7 years">4-7 years</option>
+                    <option value="8+ years">8+ years</option>
                   </select>
                 </div>
 
                 <div className="mb-3">
-                  <label
-                    htmlFor="gender"
-                    className="form-label text-custom-brown"
-                  >
-                    Pet gender:
-                  </label>
+                  <label className="form-label text-custom-brown">Gender</label>
                   <select
-                    id="gender"
-                    name="gender"
                     className="form-select"
+                    name="gender"
                     value={formData.gender}
                     onChange={handleInputChange}
+                    required
                   >
-                    <option>Male</option>
-                    <option>Female</option>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                    <option value="Unknown">Unknown</option>
                   </select>
                 </div>
 
-                <div className="mb-4">
-                  <p className="mb-2 text-custom-brown">Is your pet social?</p>
-                  <div className="d-flex gap-4">
-                    <div className="form-check">
-                      <input
-                        type="radio"
-                        id="socialYes"
-                        name="social"
-                        value="yes"
-                        className="form-check-input"
-                        checked={formData.social === "yes"}
-                        onChange={handleInputChange}
-                      />
-                      <label
-                        className="form-check-label text-custom-brown"
-                        htmlFor="socialYes"
-                      >
-                        Yes
-                      </label>
-                    </div>
-                    <div className="form-check">
-                      <input
-                        type="radio"
-                        id="socialNo"
-                        name="social"
-                        value="no"
-                        className="form-check-input"
-                        checked={formData.social === "no"}
-                        onChange={handleInputChange}
-                      />
-                      <label
-                        className="form-check-label text-custom-brown"
-                        htmlFor="socialNo"
-                      >
-                        No
-                      </label>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="mb-4">
-                  <label
-                    htmlFor="more"
-                    className="form-label text-custom-brown"
-                  >
-                    Additional information:
+                <div className="mb-3">
+                  <label className="form-label text-custom-brown">
+                    Is your pet social with other animals?
                   </label>
-                  <textarea
-                    id="more"
-                    name="more"
-                    className="form-control"
-                    value={formData.more}
+                  <select
+                    className="form-select"
+                    name="social"
+                    value={formData.social}
                     onChange={handleInputChange}
-                    rows={4}
-                    placeholder="Share any additional details about your pet..."
-                  />
+                    required
+                  >
+                    <option value="">Select an option</option>
+                    <option value="Yes">Yes</option>
+                    <option value="No">No</option>
+                    <option value="Sometimes">Sometimes</option>
+                  </select>
                 </div>
 
                 <div className="mb-3">
-                  <label
-                    htmlFor="ownerName"
-                    className="form-label text-custom-brown"
-                  >
-                    Your name:
+                  <label className="form-label text-custom-brown">
+                    Additional Information
+                  </label>
+                  <textarea
+                    className="form-control"
+                    name="more"
+                    value={formData.more}
+                    onChange={handleInputChange}
+                    rows={3}
+                    placeholder="Any additional information about your pet..."
+                  ></textarea>
+                </div>
+
+                <div className="mb-3">
+                  <label className="form-label text-custom-brown">
+                    Your Name
                   </label>
                   <input
                     type="text"
-                    id="ownerName"
-                    name="ownerName"
                     className="form-control"
+                    name="ownerName"
                     value={formData.ownerName}
                     onChange={handleInputChange}
                     required
@@ -317,47 +309,31 @@ const Giveaway: React.FC = () => {
                 </div>
 
                 <div className="mb-4">
-                  <label
-                    htmlFor="ownerEmail"
-                    className="form-label text-custom-brown"
-                  >
-                    Your email:
+                  <label className="form-label text-custom-brown">
+                    Your Email
                   </label>
                   <input
                     type="email"
-                    id="ownerEmail"
-                    name="ownerEmail"
                     className="form-control"
+                    name="ownerEmail"
                     value={formData.ownerEmail}
                     onChange={handleInputChange}
                     required
                   />
                 </div>
 
-                <div className="d-grid gap-2 d-md-flex justify-content-center">
-                  <button type="submit" className="btn btn-custom-primary px-4">
-                    Register Pet
+                <div className="d-grid gap-2">
+                  <button type="submit" className="btn btn-custom-primary">
+                    Submit Registration
                   </button>
                   <button
                     type="button"
-                    className="btn btn-custom-secondary px-4"
+                    className="btn btn-outline-secondary"
                     onClick={handleReset}
                   >
-                    Reset
+                    Reset Form
                   </button>
                 </div>
-
-                {message && (
-                  <div
-                    className={`alert ${
-                      message.includes("successful")
-                        ? "alert-success"
-                        : "alert-danger"
-                    } mt-3 text-center`}
-                  >
-                    {message}
-                  </div>
-                )}
               </form>
             </div>
           </div>
