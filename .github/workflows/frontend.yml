@@ -2,11 +2,11 @@ name: Frontend CI/CD
 
 on:
   push:
-    branches: [main]
+    branches: [master]
     paths:
       - "frontend-react/**"
   pull_request:
-    branches: [main]
+    branches: [master]
     paths:
       - "frontend-react/**"
 
