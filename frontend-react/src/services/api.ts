@@ -1,13 +1,17 @@
 import axios from "axios";
 import { AuthResponse, User, Pet } from "../types/api";
 
-const API_BASE_URL = process.env.REACT_APP_API_URL || "http://localhost:5002";
+// Get the API URL from environment variables
+const API_URL = process.env.REACT_APP_API_URL || "http://localhost:5002";
+// Ensure the baseURL always has /api at the end
+const baseURL = API_URL.endsWith("/api") ? API_URL : `${API_URL}/api`;
 
 const api = axios.create({
-  baseURL: API_BASE_URL,
+  baseURL,
   headers: {
     "Content-Type": "application/json",
   },
+  withCredentials: true, // Enable credentials for CORS
 });
 
 // Add a request interceptor to add the auth token to requests

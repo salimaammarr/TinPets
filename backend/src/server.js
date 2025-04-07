@@ -10,7 +10,7 @@ const app = express();
 // Parse CORS_ORIGIN from env
 const allowedOrigins = process.env.CORS_ORIGIN
   ? process.env.CORS_ORIGIN.split(",")
-  : ["http://localhost:3000"];
+  : ["http://localhost:3000", "https://selimaammar.github.io"];
 
 // Middleware
 app.use(
@@ -34,6 +34,11 @@ app.use(express.json());
 // Routes
 app.use("/api/users", userRoutes);
 app.use("/api/pets", petRoutes);
+
+// Health check endpoint for deployment platforms
+app.get("/health", (req, res) => {
+  res.status(200).json({ status: "ok" });
+});
 
 // MongoDB connection
 mongoose

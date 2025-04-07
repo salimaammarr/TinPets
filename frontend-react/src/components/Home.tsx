@@ -37,7 +37,7 @@ const Home: React.FC = () => {
         <div className="row justify-content-center">
           <div className="col-lg-8 text-center text-light">
             <img
-              src="/logo.png"
+              src={`${process.env.PUBLIC_URL}/logo.png`}
               alt="TinPets Logo"
               className="logo-img-hero mb-5"
               style={{ height: "120px", width: "auto" }}

@@ -37,7 +37,7 @@ const Auth: React.FC = () => {
           <div className="text-center mb-4">
             <Link to="/" className="text-decoration-none">
               <img
-                src="/logo.png"
+                src={`${process.env.PUBLIC_URL}/logo.png`}
                 alt="TinPets Logo"
                 height="60"
                 className="mb-3"

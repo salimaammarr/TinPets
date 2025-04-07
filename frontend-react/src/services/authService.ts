@@ -1,6 +1,7 @@
 import axios, { AxiosError } from "axios";
 
-const API_URL = process.env.REACT_APP_API_URL || "http://localhost:5002/api";
+const API_URL = process.env.REACT_APP_API_URL || "http://localhost:5002";
+const baseURL = API_URL.endsWith("/api") ? API_URL : `${API_URL}/api`;
 
 // Configure axios defaults
 axios.defaults.withCredentials = true;
@@ -26,7 +27,7 @@ const authService = {
   async login(data: LoginData): Promise<AuthResponse> {
     try {
       const response = await axios.post<AuthResponse>(
-        `${API_URL}/users/login`,
+        `${baseURL}/users/login`,
         data
       );
       if (response.data.token) {
@@ -47,7 +48,7 @@ const authService = {
   async register(data: RegisterData): Promise<AuthResponse> {
     try {
       const response = await axios.post<AuthResponse>(
-        `${API_URL}/users/register`,
+        `${baseURL}/users/register`,
         data
       );
       if (response.data.token) {

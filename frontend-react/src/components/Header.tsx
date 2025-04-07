@@ -17,7 +17,7 @@ const Header: React.FC = () => {
       <div className="container">
         <Link className="navbar-brand d-flex align-items-center" to="/">
           <img
-            src="/logo.png"
+            src={`${process.env.PUBLIC_URL}/logo.png`}
             alt="TinPets Logo"
             height="40"
             className="me-2"
