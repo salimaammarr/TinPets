@@ -1,36 +1,39 @@
 import React, { useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useAuth } from "../contexts/AuthContext";
 
 const Header: React.FC = () => {
   const [isNavCollapsed, setIsNavCollapsed] = useState(true);
-  const location = useLocation();
+  const { user, logout } = useAuth();
+  const navigate = useNavigate();
 
-  const handleNavCollapse = () => setIsNavCollapsed(!isNavCollapsed);
-
-  const isActive = (path: string) => location.pathname === path;
+  const handleLogout = () => {
+    logout();
+    navigate("/");
+  };
 
   return (
-    <nav className="navbar navbar-expand-lg navbar-dark bg-custom-navy sticky-top py-2 shadow-sm">
+    <nav className="navbar navbar-expand-lg navbar-dark bg-custom-navy sticky-top py-3 px-4 shadow">
       <div className="container">
         <Link className="navbar-brand d-flex align-items-center" to="/">
           <img
             src="/logo.png"
             alt="TinPets Logo"
-            className="logo-img me-2"
-            style={{ height: "40px" }}
+            height="40"
+            className="me-2"
           />
-          <span className="fw-bold text-custom-yellow">TinPets</span>
+          <span className="text-custom-yellow">TinPets</span>
         </Link>
 
         <button
-          className="navbar-toggler border-0 focus-ring focus-ring-light"
+          className="navbar-toggler border-0"
           type="button"
           data-bs-toggle="collapse"
           data-bs-target="#navbarNav"
           aria-controls="navbarNav"
           aria-expanded={!isNavCollapsed}
           aria-label="Toggle navigation"
-          onClick={handleNavCollapse}
+          onClick={() => setIsNavCollapsed(!isNavCollapsed)}
         >
           <span className="navbar-toggler-icon"></span>
         </button>
@@ -39,64 +42,48 @@ const Header: React.FC = () => {
           className={`${isNavCollapsed ? "collapse" : ""} navbar-collapse`}
           id="navbarNav"
         >
-          <ul className="navbar-nav me-auto mb-2 mb-lg-0 gap-1">
-            <li className="nav-item">
-              <Link
-                className={`nav-link px-3 ${
-                  isActive("/find-pets") ? "active nav-active" : ""
-                }`}
-                to="/find-pets"
-              >
-                <i className="fas fa-search me-1"></i>
-                Find Pets
+          <ul className="navbar-nav me-auto">
+            <li className="nav-item px-3">
+              <Link className="nav-link" to="/find-pets">
+                <i className="fas fa-paw me-1"></i> Find Pets
               </Link>
             </li>
-            <li className="nav-item">
-              <Link
-                className={`nav-link px-3 ${
-                  isActive("/pet-care") ? "active nav-active" : ""
-                }`}
-                to="/pet-care"
-              >
-                <i className="fas fa-paw me-1"></i>
-                Pet Care
+            <li className="nav-item px-3">
+              <Link className="nav-link" to="/pet-care">
+                <i className="fas fa-heart me-1"></i> Pet Care
               </Link>
             </li>
-            <li className="nav-item">
-              <Link
-                className={`nav-link px-3 ${
-                  isActive("/contact") ? "active nav-active" : ""
-                }`}
-                to="/contact"
-              >
-                <i className="fas fa-envelope me-1"></i>
-                Contact
+            <li className="nav-item px-3">
+              <Link className="nav-link" to="/contact">
+                <i className="fas fa-envelope me-1"></i> Contact
               </Link>
             </li>
           </ul>
 
-          <ul className="navbar-nav gap-1">
-            <li className="nav-item">
-              <Link
-                className={`nav-link px-3 ${
-                  isActive("/login") ? "active nav-active" : ""
-                }`}
-                to="/login"
-              >
-                <i className="fas fa-sign-in-alt me-1"></i>
-                Login
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link
-                className="nav-link btn btn-custom-primary ms-lg-2 px-4 rounded-pill"
-                to="/create-account"
-              >
-                <i className="fas fa-user-plus me-1"></i>
-                Sign Up
-              </Link>
-            </li>
-          </ul>
+          <div className="d-flex">
+            {user ? (
+              <>
+                <Link className="btn btn-custom-primary me-2" to="/giveaway">
+                  <i className="fas fa-gift me-1"></i> Giveaway
+                </Link>
+                <button
+                  className="btn btn-outline-light"
+                  onClick={handleLogout}
+                >
+                  <i className="fas fa-sign-out-alt me-1"></i> Logout
+                </button>
+              </>
+            ) : (
+              <>
+                <Link className="btn btn-outline-light me-2" to="/login">
+                  <i className="fas fa-sign-in-alt me-1"></i> Login
+                </Link>
+                <Link className="btn btn-custom-primary" to="/signup">
+                  <i className="fas fa-user-plus me-1"></i> Sign Up
+                </Link>
+              </>
+            )}
+          </div>
         </div>
       </div>
     </nav>

@@ -24,10 +24,7 @@ const Home: React.FC = () => {
               <Link to="/login" className="btn btn-outline-light btn-sm px-3">
                 Login
               </Link>
-              <Link
-                to="/create-account"
-                className="btn btn-custom-primary btn-sm px-3"
-              >
+              <Link to="/signup" className="btn btn-custom-primary btn-sm px-3">
                 Sign Up
               </Link>
             </div>
@@ -54,7 +51,7 @@ const Home: React.FC = () => {
             </p>
             <div className="d-flex flex-column align-items-center gap-4">
               <Link
-                to="/create-account"
+                to="/signup"
                 className="btn btn-custom-primary btn-lg px-5 py-3 fw-semibold"
               >
                 <i className="fas fa-paw me-2"></i>
