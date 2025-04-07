@@ -9,6 +9,7 @@ on:
     branches: [master]
     paths:
       - "frontend-react/**"
+  workflow_dispatch:
 
 permissions:
   contents: write
@@ -16,6 +17,7 @@ permissions:
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
+    environment: production
 
     defaults:
       run:
