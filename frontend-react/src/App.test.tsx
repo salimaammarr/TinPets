@@ -3,12 +3,25 @@ import { render, screen } from "@testing-library/react";
 import { BrowserRouter } from "react-router-dom";
 import App from "./App";
 
-test("renders learn react link", () => {
+// Mock the authService
+jest.mock("./services/authService", () => ({
+  __esModule: true,
+  default: {
+    login: jest.fn(),
+    register: jest.fn(),
+    logout: jest.fn(),
+    getCurrentUser: jest.fn().mockReturnValue(null),
+    getAuthHeader: jest.fn().mockReturnValue({}),
+  },
+}));
+
+test("renders TinPets app", () => {
   render(
     <BrowserRouter>
       <App />
     </BrowserRouter>
   );
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
+  // Update this to match something that should be in your app
+  const appElement = screen.getByText(/TinPets/i);
+  expect(appElement).toBeInTheDocument();
 });
